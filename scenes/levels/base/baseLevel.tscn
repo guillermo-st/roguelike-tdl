@@ -1,0 +1,190 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/base/baseLevel.gd" type="Script" id=2]
+
+[node name="baseLevel" type="Node2D"]
+position = Vector2( -800, -450 )
+script = ExtResource( 2 )
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
+
+[node name="Wall2" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 96, 32 )
+
+[node name="Wall3" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 160, 32 )
+
+[node name="Wall4" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 224, 32 )
+
+[node name="Wall5" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 288, 32 )
+
+[node name="Wall6" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 352, 32 )
+
+[node name="Wall7" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 416, 32 )
+
+[node name="Wall8" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1184, 32 )
+
+[node name="Wall9" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1248, 32 )
+
+[node name="Wall10" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1312, 32 )
+
+[node name="Wall11" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1376, 32 )
+
+[node name="Wall12" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1440, 32 )
+
+[node name="Wall13" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1504, 32 )
+
+[node name="Wall14" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 32 )
+
+[node name="Wall15" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 864 )
+
+[node name="Wall16" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 96, 864 )
+
+[node name="Wall17" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 160, 864 )
+
+[node name="Wall18" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 224, 864 )
+
+[node name="Wall19" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 288, 864 )
+
+[node name="Wall20" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 352, 864 )
+
+[node name="Wall21" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 416, 864 )
+
+[node name="Wall22" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1184, 864 )
+
+[node name="Wall23" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1248, 864 )
+
+[node name="Wall24" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1312, 864 )
+
+[node name="Wall25" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1376, 864 )
+
+[node name="Wall26" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1440, 864 )
+
+[node name="Wall27" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1504, 864 )
+
+[node name="Wall28" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 864 )
+
+[node name="Wall29" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 800 )
+
+[node name="Wall30" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 736 )
+
+[node name="Wall31" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 96 )
+
+[node name="Wall32" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 160 )
+
+[node name="Wall33" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 96 )
+
+[node name="Wall34" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 160 )
+
+[node name="Wall35" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 800 )
+
+[node name="Wall36" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 736 )
+
+[node name="Wall37" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 672 )
+
+[node name="Wall38" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 608 )
+
+[node name="Wall39" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 224 )
+
+[node name="Wall40" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 32, 288 )
+
+[node name="Wall41" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 224 )
+
+[node name="Wall42" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 288 )
+
+[node name="Wall43" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 672 )
+
+[node name="Wall44" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1568, 608 )
+
+[node name="Wall45" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1120, 864 )
+
+[node name="Wall46" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1056, 864 )
+
+[node name="Wall47" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 992, 864 )
+
+[node name="Wall48" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 928, 864 )
+
+[node name="Wall49" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 672, 864 )
+
+[node name="Wall50" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 608, 864 )
+
+[node name="Wall51" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 544, 864 )
+
+[node name="Wall52" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 480, 864 )
+
+[node name="Wall53" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 672, 32 )
+
+[node name="Wall54" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 608, 32 )
+
+[node name="Wall55" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 544, 32 )
+
+[node name="Wall56" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 480, 32 )
+
+[node name="Wall57" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1120, 32 )
+
+[node name="Wall58" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 1056, 32 )
+
+[node name="Wall59" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 992, 32 )
+
+[node name="Wall60" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 928, 32 )
