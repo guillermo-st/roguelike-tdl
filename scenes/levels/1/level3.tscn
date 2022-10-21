@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
+
+[node name="level" type="Node2D"]
+
+[node name="baseLevel" parent="." instance=ExtResource( 2 )]
+
+[node name="Wall4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, -104 )
+
+[node name="Wall5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, -40 )
+
+[node name="Wall6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 24 )
+
+[node name="Wall7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 88 )
+
+[node name="Wall8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -104 )
+
+[node name="Wall9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -40 )
+
+[node name="Wall10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 24 )
+
+[node name="Wall11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 88 )
+
+[node name="Wall12" parent="." instance=ExtResource( 1 )]
+position = Vector2( -96, -104 )
+
+[node name="Wall13" parent="." instance=ExtResource( 1 )]
+position = Vector2( -96, -40 )
+
+[node name="Wall14" parent="." instance=ExtResource( 1 )]
+position = Vector2( -96, 24 )
+
+[node name="Wall15" parent="." instance=ExtResource( 1 )]
+position = Vector2( -96, 88 )
