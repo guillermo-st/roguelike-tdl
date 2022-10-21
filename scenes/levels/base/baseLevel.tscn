@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/levels/base/baseLevel.gd" type="Script" id=2]
 
 [node name="baseLevel" type="Node2D"]
-position = Vector2( -800, -450 )
 script = ExtResource( 2 )
 
 [node name="walls" type="Node2D" parent="."]
