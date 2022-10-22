@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/base/baseLevel.gd" type="Script" id=2]
 
-[node name="baseLevel" type="Node2D"]
+[node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="walls" type="Node2D" parent="."]

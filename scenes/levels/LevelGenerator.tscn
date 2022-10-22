@@ -1,11 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/levels/LevelGenerator.gd" type="Script" id=1]
-[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/levels/common/InitialLevel.tscn" type="PackedScene" id=2]
 
 [node name="LevelGenerator" type="Node2D"]
 script = ExtResource( 1 )
 level_dir = "res://scenes/levels/1/"
-level_depth = 10
+level_depth = 8
+repeats = 1
 
-[node name="baseLevel" parent="." instance=ExtResource( 2 )]
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 15, 15 )
+
+[node name="InitialLevel" parent="." instance=ExtResource( 2 )]
