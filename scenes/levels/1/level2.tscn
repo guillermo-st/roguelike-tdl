@@ -5,6 +5,7 @@
 [ext_resource path="res://scenes/levels/base/customLevel.gd" type="Script" id=3]
 
 [node name="level" type="Node2D"]
+modulate = Color( 0.929412, 0.160784, 0.862745, 1 )
 script = ExtResource( 3 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]

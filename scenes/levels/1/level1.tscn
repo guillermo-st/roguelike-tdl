@@ -5,18 +5,19 @@
 [ext_resource path="res://scenes/levels/base/customLevel.gd" type="Script" id=3]
 
 [node name="level" type="Node2D"]
+modulate = Color( 0.831373, 1, 0.0117647, 1 )
 script = ExtResource( 3 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]
 
 [node name="Wall4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 800, 344 )
+position = Vector2( 800, 352 )
 
 [node name="Wall5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 800, 408 )
+position = Vector2( 800, 416 )
 
 [node name="Wall6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 800, 472 )
+position = Vector2( 800, 480 )
 
 [node name="Wall7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 800, 536 )
+position = Vector2( 800, 544 )
