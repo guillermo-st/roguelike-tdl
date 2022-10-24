@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/levels/base/customLevel.gd" type="Script" id=3]
+[ext_resource path="res://scenes/actor/monster/RedSpiritMonster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actor/monster/BambooMonster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actor/monster/MouseMonster.tscn" type="PackedScene" id=6]
 
 [node name="level" type="Node2D"]
 modulate = Color( 0.831373, 1, 0.0117647, 1 )
@@ -21,3 +24,9 @@ position = Vector2( 800, 480 )
 
 [node name="Wall7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 800, 544 )
+
+[node name="RedSpiritMonster" parent="." instance=ExtResource( 4 )]
+
+[node name="BambooMonster" parent="." instance=ExtResource( 5 )]
+
+[node name="MouseMonster" parent="." instance=ExtResource( 6 )]
