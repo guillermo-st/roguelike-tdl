@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/levels/base/customLevel.gd" type="Script" id=3]
 
 [node name="level" type="Node2D"]
 modulate = Color( 0.129412, 0.141176, 0.87451, 1 )
-script = ExtResource( 3 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]
 
