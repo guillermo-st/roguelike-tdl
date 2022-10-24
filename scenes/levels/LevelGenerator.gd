@@ -43,7 +43,7 @@ func load_level_paths():
 		
 		while file_name != "":
 			if !dir.current_is_dir():
-				level_paths.append(dir.get_current_dir() + file_name)
+				level_paths.append(dir.get_current_dir() + "/" + file_name)
 			file_name = dir.get_next()
 
 
