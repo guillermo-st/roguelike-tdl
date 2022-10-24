@@ -22,4 +22,4 @@ position = Vector2( 13, -12 )
 shape = SubResource( 1 )
 disabled = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
