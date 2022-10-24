@@ -73,8 +73,8 @@ func fill_level_grid(x, y):
 
 #Take the levels from the level_grid and position them in the world
 func place_levels():
-	for i in range(level_grid.size()):
-		for j in range (level_grid.size()):
+	for i in range(level_grid.size() - 1):
+		for j in range (level_grid.size() -1):
 			var level = level_grid[i][j]
 			if level:
 				level.global_position.x = j * level_width
