@@ -13,6 +13,11 @@ config_version=4
 config/name="Roguelike TDL"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1600
+window/size/height=900
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
