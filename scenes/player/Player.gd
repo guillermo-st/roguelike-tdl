@@ -47,11 +47,9 @@ func apply_friction(an_amount_of_friction):
 	else:
 		motion = Vector2.ZERO
 
-func apply_movement(acceleration):
-	motion += acceleration
-	motion = motion.clamped(max_speed)
-
-
+func apply_movement(an_ammount_of_acceleration):
+	motion += an_ammount_of_acceleration
+	motion = motion.limit_length(max_speed)
 
 
 func _on_Weapon_hit_attempt_started():

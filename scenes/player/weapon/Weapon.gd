@@ -50,6 +50,6 @@ func flip_horizontally():
 	$Pivot/Sprite.flip_h = self.position.x < 0
 	$Pivot/Sprite.rotation = -$Pivot/Sprite.rotation
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	print("HIT")
 	emit_signal("hit")
