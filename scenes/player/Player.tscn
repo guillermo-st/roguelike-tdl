@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f0.png" type="Texture" id=2]
@@ -10,9 +10,15 @@
 [ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f3.png" type="Texture" id=8]
 [ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f2.png" type="Texture" id=9]
 [ext_resource path="res://scenes/player/weapon/Weapon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/player/playerAssets/hit/knight_f_hit_anim_f0.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "hit",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "idle",
@@ -25,8 +31,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 4.0
-height = 6.0
+radius = 16.0
+height = 26.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 5 )
@@ -44,5 +50,8 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 22 )
 shape = SubResource( 2 )
+
+[connection signal="hit_attempt_ended" from="Weapon" to="." method="_on_Weapon_hit_attempt_ended"]
+[connection signal="hit_attempt_started" from="Weapon" to="." method="_on_Weapon_hit_attempt_started"]

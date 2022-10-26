@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var max_speed = 500
 export var acceleration = 2000
 var motion = Vector2.ZERO
+var is_attacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,11 +16,13 @@ func _ready():
 
 func _physics_process(delta):
 	var axis = get_input_axis()
-	if axis == Vector2.ZERO:
+	
+	if axis == Vector2.ZERO && !self.is_attacking:
 		$AnimatedSprite.play("idle")
 		apply_friction(acceleration * delta)
 	else:
-		$AnimatedSprite.play("run")		
+		if !self.is_attacking:
+			$AnimatedSprite.play("run")		
 		if axis.x < 0 and $Weapon.position.x > 0:
 			$AnimatedSprite.flip_h = true
 			$Weapon.flip_horizontally()
@@ -47,3 +50,15 @@ func apply_friction(an_amount_of_friction):
 func apply_movement(acceleration):
 	motion += acceleration
 	motion = motion.clamped(max_speed)
+
+
+
+
+func _on_Weapon_hit_attempt_started():
+	self.is_attacking = true
+	$AnimatedSprite.play("hit")
+	
+
+
+func _on_Weapon_hit_attempt_ended():
+	self.is_attacking = false
