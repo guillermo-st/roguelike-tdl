@@ -22,26 +22,11 @@ func _process(delta):
 
 func behave_when_hitting():
 	self.elpased_hit_time = 0
-	var rotation_factor = 1
-	if self.is_flipped:
-		rotation_factor = -1
 	emit_signal("hit_attempt_started")
-	$Pivot.rotate(0.6 * PI * rotation_factor)
-		
-	var timer = Timer.new()
-	timer.set_wait_time(0.1)
-	timer.set_one_shot(true)
-		
-	self.add_child(timer)
-	timer.start()
+	$Pivot.rotate(0.6 * PI * self.get_rotation_factor())
+	$AttackTimer.start()
 	$Area2D/CollisionShape2D.disabled = false		
-	yield(timer, "timeout")
-		
-	$Area2D/CollisionShape2D.disabled = true
-	$Pivot.rotate(-0.6 * PI * rotation_factor)
-	timer.queue_free()
-	emit_signal("hit_attempt_ended")
-	
+
 
 func flip_horizontally():
 	self.is_flipped = !self.is_flipped
@@ -53,3 +38,16 @@ func flip_horizontally():
 func _on_Area2D_body_entered(_body):
 	print("HIT")
 	emit_signal("hit")
+
+
+func _on_AttackTimer_timeout():
+	$Area2D/CollisionShape2D.disabled = true
+	$Pivot.rotate(-0.6 * PI * self.get_rotation_factor())
+	emit_signal("hit_attempt_ended")
+
+
+func get_rotation_factor():
+	var rotation_factor = 1
+	if self.is_flipped:
+		rotation_factor = -1
+	return rotation_factor
