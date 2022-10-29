@@ -1,0 +1,57 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/player/playerAssets/run/knight_f_run_anim_f1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/player/Player.gd" type="Script" id=5]
+[ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f0.png" type="Texture" id=6]
+[ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f1.png" type="Texture" id=7]
+[ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/weapon/Weapon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/player/playerAssets/hit/knight_f_hit_anim_f0.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 16.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+height = 26.0
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 5 )
+max_speed = 1000
+acceleration = 4000
+
+[node name="Weapon" parent="." instance=ExtResource( 10 )]
+position = Vector2( 25, 38 )
+rotation = 0.218166
+scale = Vector2( 3, 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 22 )
+shape = SubResource( 2 )
+
+[connection signal="hit_attempt_ended" from="Weapon" to="." method="_on_Weapon_hit_attempt_ended"]
+[connection signal="hit_attempt_started" from="Weapon" to="." method="_on_Weapon_hit_attempt_started"]
