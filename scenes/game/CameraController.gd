@@ -13,5 +13,5 @@ func _ready():
 
 
 func move_camera(target_position):
-	$Tween.interpolate_property($Camera2D, "global_position", $Camera2D.global_position, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Camera2D, "global_position", $Camera2D.global_position, target_position, 0.75, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.start()
