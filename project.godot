@@ -14,6 +14,10 @@ config/name="Roguelike TDL"
 run/main_scene="res://scenes/player/Player.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SignalBus="*res://scenes/game/SignalBus.gd"
+
 [display]
 
 window/size/width=1600
