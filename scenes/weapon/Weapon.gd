@@ -1,6 +1,6 @@
 extends Node2D
 
-export var hit_umbral = 0.25
+export var hit_umbral = 0.5
 var elpased_hit_time = 0
 
 signal hit
