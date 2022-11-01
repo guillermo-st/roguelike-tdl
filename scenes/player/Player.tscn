@@ -39,9 +39,12 @@ script = ExtResource( 5 )
 max_speed = 1000
 acceleration = 4000
 
-[node name="Weapon" parent="." instance=ExtResource( 10 )]
-position = Vector2( 25, 38 )
-rotation = 0.218166
+[node name="WeaponPivot" type="Node2D" parent="."]
+position = Vector2( 0, 22 )
+
+[node name="Weapon" parent="WeaponPivot" instance=ExtResource( 10 )]
+position = Vector2( 19, 20 )
+rotation = 0.286234
 scale = Vector2( 3, 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -53,5 +56,5 @@ animation = "idle"
 position = Vector2( 0, 22 )
 shape = SubResource( 2 )
 
-[connection signal="hit_attempt_ended" from="Weapon" to="." method="_on_Weapon_hit_attempt_ended"]
-[connection signal="hit_attempt_started" from="Weapon" to="." method="_on_Weapon_hit_attempt_started"]
+[connection signal="hit_attempt_ended" from="WeaponPivot/Weapon" to="." method="_on_Weapon_hit_attempt_ended"]
+[connection signal="hit_attempt_started" from="WeaponPivot/Weapon" to="." method="_on_Weapon_hit_attempt_started"]

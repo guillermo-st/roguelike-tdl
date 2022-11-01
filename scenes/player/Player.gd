@@ -11,22 +11,22 @@ func _ready():
 
 func _physics_process(delta):
 	var axis = get_input_axis()
+	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
+	$WeaponPivot.rotation = mouse_direction.angle()
 	
 	if axis == Vector2.ZERO && !self.is_attacking:
 		$AnimatedSprite.play("idle")
 		apply_friction(acceleration * delta)
 	else:
 		if !self.is_attacking:
-			$AnimatedSprite.play("run")		
-		if axis.x < 0 and $Weapon.position.x > 0:
-			$AnimatedSprite.flip_h = true
-			$Weapon.flip_horizontally()
-			$Weapon.rotation = -$Weapon.rotation			
-		elif axis.x > 0 and $Weapon.position.x < 0:
-			$AnimatedSprite.flip_h = false
-			$Weapon.flip_horizontally()
-			$Weapon.rotation = -$Weapon.rotation
+			$AnimatedSprite.play("run")
 		apply_movement(axis * acceleration * delta)
+	if mouse_direction.x > 0 and $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = false
+		$WeaponPivot.scale.y = -$WeaponPivot.scale.y	
+	elif mouse_direction.x < 0 and not $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = true
+		$WeaponPivot.scale.y = -$WeaponPivot.scale.y	
 	motion = move_and_slide(motion)
 
 func get_input_axis():
