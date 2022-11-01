@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Roguelike TDL"
-run/main_scene="res://scenes/player/Player.tscn"
+run/main_scene="res://scenes/game/GameController.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SignalBus="*res://scenes/game/SignalBus.gd"
 
 [display]
 

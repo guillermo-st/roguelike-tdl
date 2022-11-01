@@ -9,8 +9,4 @@ level_dir = "res://scenes/levels/1/"
 level_depth = 8
 repeats = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 15, 15 )
-
 [node name="InitialLevel" parent="." instance=ExtResource( 2 )]
