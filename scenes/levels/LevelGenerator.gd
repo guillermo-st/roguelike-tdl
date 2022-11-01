@@ -26,8 +26,6 @@ func _ready():
 		fill_level_grid(level_depth - 1, level_depth - 1)
 	
 	place_levels()
-	
-	$Camera2D.global_position = $level.position
 
 #loads all strings representing the levels to be selected into a list.
 func load_level_paths():
