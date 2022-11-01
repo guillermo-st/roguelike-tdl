@@ -6,7 +6,7 @@ var motion = Vector2.ZERO
 var is_attacking = false
 var weapon_position = Vector2(19, 20)
 var weapon_scale = Vector2(3, 3)
-var weapon_rotation = 0.286234
+var weapon_rotation = 16.4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
 	$WeaponPivot/Weapon.position = weapon_position
 	$WeaponPivot/Weapon.scale = weapon_scale
-	$WeaponPivot/Weapon.rotation = weapon_rotation
+	$WeaponPivot/Weapon.rotation_degrees = weapon_rotation
 
 func _physics_process(delta):
 	var axis = get_input_axis()
@@ -58,7 +58,5 @@ func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
 	$AnimatedSprite.play("hit")
 	
-
-
 func _on_Weapon_hit_attempt_ended():
 	self.is_attacking = false
