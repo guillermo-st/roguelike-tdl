@@ -9,6 +9,5 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("player"):
-		SignalBus.emit_signal("player_entered_level", $CenterAnchor.global_position)
+func _on_Area2D_body_entered(_body):
+	SignalBus.emit_signal("player_entered_level", $CenterAnchor.global_position)
