@@ -9,8 +9,8 @@
 [ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f1.png" type="Texture" id=7]
 [ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f3.png" type="Texture" id=8]
 [ext_resource path="res://scenes/player/playerAssets/idle/knight_f_idle_anim_f2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/weapon/staff/Staff.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/player/playerAssets/hit/knight_f_hit_anim_f0.png" type="Texture" id=11]
-[ext_resource path="res://scenes/weapon/Sword/Sword.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -43,7 +43,7 @@ acceleration = 4000
 [node name="WeaponPivot" type="Node2D" parent="."]
 position = Vector2( 0, 22 )
 
-[node name="Weapon" parent="WeaponPivot" instance=ExtResource( 12 )]
+[node name="Weapon" parent="WeaponPivot" instance=ExtResource( 10 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 4, 4 )
