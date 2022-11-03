@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var max_speed = 500
-export var acceleration = 2000
+export var acceleration = 1000
 var motion = Vector2.ZERO
 var is_attacking = false
 
