@@ -1,205 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/ambient/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ambient/BackgroundTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/levels/base/baseLevel.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ambient/ForegroundTilemap.tres" type="TileSet" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 793, 441 )
+extents = Vector2( 196, 108 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="walls" type="Node2D" parent="."]
-
-[node name="Wall" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 32 )
-
-[node name="Wall2" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 96, 32 )
-
-[node name="Wall3" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 160, 32 )
-
-[node name="Wall4" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 224, 32 )
-
-[node name="Wall5" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 288, 32 )
-
-[node name="Wall6" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 352, 32 )
-
-[node name="Wall7" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 416, 32 )
-
-[node name="Wall8" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1184, 32 )
-
-[node name="Wall9" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1248, 32 )
-
-[node name="Wall10" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1312, 32 )
-
-[node name="Wall11" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1376, 32 )
-
-[node name="Wall12" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1440, 32 )
-
-[node name="Wall13" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1504, 32 )
-
-[node name="Wall14" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 32 )
-
-[node name="Wall15" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 864 )
-
-[node name="Wall16" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 96, 864 )
-
-[node name="Wall17" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 160, 864 )
-
-[node name="Wall18" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 224, 864 )
-
-[node name="Wall19" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 288, 864 )
-
-[node name="Wall20" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 352, 864 )
-
-[node name="Wall21" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 416, 864 )
-
-[node name="Wall22" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1184, 864 )
-
-[node name="Wall23" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1248, 864 )
-
-[node name="Wall24" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1312, 864 )
-
-[node name="Wall25" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1376, 864 )
-
-[node name="Wall26" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1440, 864 )
-
-[node name="Wall27" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1504, 864 )
-
-[node name="Wall28" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 864 )
-
-[node name="Wall29" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 800 )
-
-[node name="Wall30" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 736 )
-
-[node name="Wall31" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 96 )
-
-[node name="Wall32" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 160 )
-
-[node name="Wall33" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 96 )
-
-[node name="Wall34" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 160 )
-
-[node name="Wall35" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 800 )
-
-[node name="Wall36" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 736 )
-
-[node name="Wall37" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 672 )
-
-[node name="Wall38" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 608 )
-
-[node name="Wall39" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 224 )
-
-[node name="Wall40" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 32, 288 )
-
-[node name="Wall41" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 224 )
-
-[node name="Wall42" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 288 )
-
-[node name="Wall43" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 672 )
-
-[node name="Wall44" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1568, 608 )
-
-[node name="Wall45" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1120, 864 )
-
-[node name="Wall46" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1056, 864 )
-
-[node name="Wall47" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 992, 864 )
-
-[node name="Wall48" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 928, 864 )
-
-[node name="Wall49" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 672, 864 )
-
-[node name="Wall50" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 608, 864 )
-
-[node name="Wall51" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 544, 864 )
-
-[node name="Wall52" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 480, 864 )
-
-[node name="Wall53" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 672, 32 )
-
-[node name="Wall54" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 608, 32 )
-
-[node name="Wall55" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 544, 32 )
-
-[node name="Wall56" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 480, 32 )
-
-[node name="Wall57" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1120, 32 )
-
-[node name="Wall58" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 1056, 32 )
-
-[node name="Wall59" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 992, 32 )
-
-[node name="Wall60" parent="walls" instance=ExtResource( 1 )]
-position = Vector2( 928, 32 )
-
 [node name="CenterAnchor" type="Node2D" parent="."]
-position = Vector2( 800, 450 )
+position = Vector2( 200, 112.5 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 800, 448 )
+position = Vector2( 200, 112 )
 shape = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 8, 6, 0, 9, 6, 0, 10, 6, 0, 11, 6, 0, 12, 6, 0, 13, 6, 0, 14, 6, 0, 15, 6, 0, 16, 6, 0, 17, 4, 0, 18, 6, 0, 19, 6, 0, 20, 6, 0, 21, 6, 0, 22, 6, 0, 23, 6, 0, 24, 6, 0, 65536, 6, 0, 65537, 6, 0, 65538, 6, 0, 65539, 6, 0, 65540, 6, 0, 65541, 6, 0, 65542, 6, 0, 65543, 2, 0, 65544, 6, 0, 65545, 6, 0, 65546, 6, 0, 65547, 3, 0, 65548, 6, 0, 65549, 3, 0, 65550, 6, 0, 65551, 6, 0, 65552, 6, 0, 65553, 6, 0, 65554, 6, 0, 65555, 6, 0, 65556, 6, 0, 65557, 4, 0, 65558, 6, 0, 65559, 6, 0, 65560, 6, 0, 131072, 6, 0, 131073, 6, 0, 131074, 3, 0, 131075, 3, 0, 131076, 6, 0, 131077, 4, 0, 131078, 3, 0, 131079, 6, 0, 131080, 6, 0, 131081, 6, 0, 131082, 6, 0, 131083, 6, 0, 131084, 4, 0, 131085, 6, 0, 131086, 6, 0, 131087, 6, 0, 131088, 2, 0, 131089, 6, 0, 131090, 6, 0, 131091, 4, 0, 131092, 6, 0, 131093, 6, 0, 131094, 6, 0, 131095, 2, 0, 131096, 6, 0, 196608, 6, 0, 196609, 6, 0, 196610, 6, 0, 196611, 6, 0, 196612, 6, 0, 196613, 6, 0, 196614, 6, 0, 196615, 6, 0, 196616, 6, 0, 196617, 6, 0, 196618, 6, 0, 196619, 6, 0, 196620, 6, 0, 196621, 6, 0, 196622, 6, 0, 196623, 6, 0, 196624, 6, 0, 196625, 4, 0, 196626, 6, 0, 196627, 2, 0, 196628, 6, 0, 196629, 6, 0, 196630, 6, 0, 196631, 6, 0, 196632, 6, 0, 262144, 6, 0, 262145, 2, 0, 262146, 6, 0, 262147, 6, 0, 262148, 6, 0, 262149, 6, 0, 262150, 6, 0, 262151, 6, 0, 262152, 6, 0, 262153, 4, 0, 262154, 2, 0, 262155, 6, 0, 262156, 6, 0, 262157, 6, 0, 262158, 3, 0, 262159, 6, 0, 262160, 6, 0, 262161, 6, 0, 262162, 6, 0, 262163, 6, 0, 262164, 3, 0, 262165, 6, 0, 262166, 6, 0, 262167, 6, 0, 262168, 6, 0, 327680, 4, 0, 327681, 6, 0, 327682, 6, 0, 327683, 6, 0, 327684, 3, 0, 327685, 2, 0, 327686, 3, 0, 327687, 6, 0, 327688, 6, 0, 327689, 6, 0, 327690, 6, 0, 327691, 6, 0, 327692, 6, 0, 327693, 6, 0, 327694, 6, 0, 327695, 6, 0, 327696, 3, 0, 327697, 6, 0, 327698, 6, 0, 327699, 6, 0, 327700, 3, 0, 327701, 6, 0, 327702, 4, 0, 327703, 3, 0, 327704, 6, 0, 393216, 6, 0, 393217, 6, 0, 393218, 6, 0, 393219, 6, 0, 393220, 4, 0, 393221, 6, 0, 393222, 6, 0, 393223, 6, 0, 393224, 6, 0, 393225, 6, 0, 393226, 6, 0, 393227, 6, 0, 393228, 6, 0, 393229, 6, 0, 393230, 6, 0, 393231, 4, 0, 393232, 6, 0, 393233, 6, 0, 393234, 6, 0, 393235, 6, 0, 393236, 6, 0, 393237, 6, 0, 393238, 6, 0, 393239, 6, 0, 393240, 6, 0, 458752, 6, 0, 458753, 6, 0, 458754, 3, 0, 458755, 6, 0, 458756, 6, 0, 458757, 6, 0, 458758, 6, 0, 458759, 6, 0, 458760, 6, 0, 458761, 6, 0, 458762, 6, 0, 458763, 6, 0, 458764, 6, 0, 458765, 6, 0, 458766, 6, 0, 458767, 6, 0, 458768, 2, 0, 458769, 6, 0, 458770, 6, 0, 458771, 6, 0, 458772, 2, 0, 458773, 6, 0, 458774, 6, 0, 458775, 6, 0, 458776, 6, 0, 524288, 6, 0, 524289, 6, 0, 524290, 3, 0, 524291, 4, 0, 524292, 6, 0, 524293, 6, 0, 524294, 2, 0, 524295, 4, 0, 524296, 6, 0, 524297, 6, 0, 524298, 6, 0, 524299, 6, 0, 524300, 6, 0, 524301, 6, 0, 524302, 6, 0, 524303, 6, 0, 524304, 6, 0, 524305, 6, 0, 524306, 6, 0, 524307, 6, 0, 524308, 6, 0, 524309, 6, 0, 524310, 6, 0, 524311, 6, 0, 524312, 6, 0, 589824, 6, 0, 589825, 2, 0, 589826, 6, 0, 589827, 6, 0, 589828, 2, 0, 589829, 6, 0, 589830, 6, 0, 589831, 4, 0, 589832, 6, 0, 589833, 3, 0, 589834, 6, 0, 589835, 2, 0, 589836, 3, 0, 589837, 4, 0, 589838, 4, 0, 589839, 6, 0, 589840, 3, 0, 589841, 6, 0, 589842, 6, 0, 589843, 6, 0, 589844, 6, 0, 589845, 6, 0, 589846, 3, 0, 589847, 6, 0, 589848, 6, 0, 655360, 6, 0, 655361, 6, 0, 655362, 6, 0, 655363, 6, 0, 655364, 6, 0, 655365, 6, 0, 655366, 6, 0, 655367, 6, 0, 655368, 6, 0, 655369, 6, 0, 655370, 4, 0, 655371, 6, 0, 655372, 6, 0, 655373, 6, 0, 655374, 6, 0, 655375, 6, 0, 655376, 3, 0, 655377, 4, 0, 655378, 6, 0, 655379, 6, 0, 655380, 6, 0, 655381, 3, 0, 655382, 6, 0, 655383, 6, 0, 655384, 3, 0, 720896, 6, 0, 720897, 6, 0, 720898, 6, 0, 720899, 6, 0, 720900, 6, 0, 720901, 6, 0, 720902, 6, 0, 720903, 6, 0, 720904, 6, 0, 720905, 6, 0, 720906, 6, 0, 720907, 6, 0, 720908, 6, 0, 720909, 6, 0, 720910, 6, 0, 720911, 6, 0, 720912, 6, 0, 720913, 6, 0, 720914, 2, 0, 720915, 6, 0, 720916, 6, 0, 720917, 6, 0, 720918, 6, 0, 720919, 6, 0, 720920, 6, 0, 786432, 6, 0, 786433, 6, 0, 786434, 6, 0, 786435, 4, 0, 786436, 6, 0, 786437, 3, 0, 786438, 6, 0, 786439, 2, 0, 786440, 6, 0, 786441, 4, 0, 786442, 6, 0, 786443, 6, 0, 786444, 6, 0, 786445, 6, 0, 786446, 4, 0, 786447, 6, 0, 786448, 6, 0, 786449, 6, 0, 786450, 6, 0, 786451, 6, 0, 786452, 4, 0, 786453, 6, 0, 786454, 4, 0, 786455, 2, 0, 786456, 6, 0, 851968, 6, 0, 851969, 2, 0, 851970, 6, 0, 851971, 6, 0, 851972, 6, 0, 851973, 6, 0, 851974, 6, 0, 851975, 6, 0, 851976, 6, 0, 851977, 6, 0, 851978, 6, 0, 851979, 3, 0, 851980, 6, 0, 851981, 6, 0, 851982, 6, 0, 851983, 4, 0, 851984, 6, 0, 851985, 6, 0, 851986, 6, 0, 851987, 6, 0, 851988, 6, 0, 851989, 6, 0, 851990, 6, 0, 851991, 6, 0, 851992, 6, 0 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 128
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 12, 0, 2, 12, 0, 3, 12, 0, 4, 12, 0, 5, 12, 0, 6, 12, 0, 7, 12, 0, 8, 12, 0, 9, 12, 0, 10, 3, 0, 14, 2, 0, 15, 12, 0, 16, 12, 0, 17, 12, 0, 18, 12, 0, 19, 12, 0, 20, 12, 0, 21, 12, 0, 22, 12, 0, 23, 12, 0, 24, 3, 0, 65536, 6, 0, 65560, 7, 0, 131072, 6, 0, 131096, 7, 0, 196608, 6, 0, 196632, 7, 0, 262144, 6, 0, 262168, 7, 0, 327680, 14, 0, 327704, 15, 0, 524288, 6, 0, 524312, 7, 0, 589824, 6, 0, 589848, 7, 0, 655360, 6, 0, 655384, 7, 0, 720896, 6, 0, 720920, 7, 0, 786432, 6, 0, 786456, 7, 0, 851968, 1, 0, 851969, 4, 0, 851970, 4, 0, 851971, 4, 0, 851972, 4, 0, 851973, 4, 0, 851974, 4, 0, 851975, 4, 0, 851976, 4, 0, 851977, 4, 0, 851978, 4, 0, 851982, 4, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0, 851991, 4, 0, 851992, 0, 0 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
