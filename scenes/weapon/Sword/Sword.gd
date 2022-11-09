@@ -24,6 +24,7 @@ func behave_when_hitting():
 	$AttackTimer.start()
 	$Area2D/CollisionShape2D.disabled = false	
 	
+
 func _on_AttackTimer_timeout():
 	$Area2D/CollisionShape2D.disabled = true
 	emit_signal("hit_attempt_ended")

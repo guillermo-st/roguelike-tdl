@@ -24,6 +24,7 @@ func behave_when_hitting():
 func _on_AttackTimer_timeout():	
 	emit_signal("hit_attempt_ended")
 	
+
 func shoot_fireball():
 	var fireball = particles.instance()
 	fireball.rotation_direction = self.get_parent().rotation
