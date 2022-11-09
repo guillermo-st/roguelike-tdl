@@ -3,13 +3,16 @@ extends KinematicBody2D
 signal hit(damage)
 
 export var max_speed = 500
-export var acceleration = 2000
+export var acceleration = 1000
 var motion = Vector2.ZERO
 var is_attacking = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$WeaponPivot/Weapon.connect("hit_attempt_started", self, "_on_Weapon_hit_attempt_started")
+	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
+
 
 func _physics_process(delta):
 	var axis = get_input_axis()

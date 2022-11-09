@@ -1,0 +1,26 @@
+extends Area2D
+
+export var speed = 800
+var rotation_direction
+var velocity
+var explosion_particles = preload("res://scenes/particles/Explosion.tscn")
+var is_moving = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	velocity = Vector2(1, 0).rotated(rotation_direction);
+
+func _physics_process(delta):
+	if is_moving:
+		global_position += (velocity.normalized() * delta * speed)
+
+
+func _on_FireBall_body_entered(body):
+	#aca deberiamos sacar vida si body es un enemigo
+	is_moving = false
+	$Fire.emitting = false
+	var explotion = explosion_particles.instance()
+	explotion.emitting = true
+	get_parent().add_child(explotion)
+	explotion.global_position = self.global_position
+	queue_free()

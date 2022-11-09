@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/particles/Fire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/weapon/staff/fireball/FireBall.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 4.0
+
+[node name="FireBall" type="Area2D"]
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 4
+collision_mask = 136
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Fire" parent="." instance=ExtResource( 1 )]
+
+[connection signal="body_entered" from="." to="." method="_on_FireBall_body_entered"]

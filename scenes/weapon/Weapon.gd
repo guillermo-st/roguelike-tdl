@@ -8,11 +8,6 @@ signal hit
 signal hit_attempt_started
 signal hit_attempt_ended
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.elpased_hit_time += delta
@@ -22,11 +17,7 @@ func _process(delta):
 
 
 func behave_when_hitting():
-	self.elpased_hit_time = 0
-	emit_signal("hit_attempt_started")
-	$Pivot/SwordAnimationPlayer.play("SwordAttack")
-	$AttackTimer.start()
-	$HitBox/CollisionShape2D.disabled = false		
+	pass
 
 
 func hit(damage = 1):
@@ -46,8 +37,4 @@ func _on_HitBox_area_entered(area):
 	if area.owner.has_method("hit"):
 		area.owner.hit(damage)
 		emit_signal("hit")
-
-func _on_AttackTimer_timeout():
-	$HitBox/CollisionShape2D.disabled = true
-	emit_signal("hit_attempt_ended")
 
