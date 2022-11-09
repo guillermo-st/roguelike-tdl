@@ -10,7 +10,10 @@ onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
+onready var player = get_parent().get_node("Player")
 
+var player_in_range
+var player_in_sight
 
 func hit(damage):
 	life_bar.value -= damage
@@ -21,6 +24,7 @@ func hit(damage):
 
 func _physics_process(delta):
 	move_and_slide(velocity)
+	sight_check()
 
 
 func revive():
@@ -39,6 +43,7 @@ func set_disabled(v):
 		_on_axis_changed(Vector2.ZERO)
 	$Shape.set_deferred("disabled",v)
 	$AreaHitBox/Shape.set_deferred("disabled",v)
+	$Sight/CollisionShape2D.set_deferred("disabled", v)
 
 
 func hit_fx():
@@ -80,5 +85,31 @@ func _on_axis_changed(axis:Vector2):
 
 
 func _on_AreaHitBox_body_entered(body):
+	print("Entered monster area hitbox!")
 	body.hit()
-	body.push(global_position,50)
+#	body.push(global_position,50)
+
+
+func _on_Sight_body_entered(body):
+	if body == player:
+		print("Player in sight range, run!")
+		player_in_range = true
+
+
+func _on_Sight_body_exited(body):
+	if body == player:
+		print("Player no longer in sight range")
+		player_in_range = false
+		
+func sight_check():
+	if player_in_range:
+		var space_state = get_world_2d().direct_space_state
+		var sight_check = space_state.intersect_ray(position, player.position, [self], 2)
+		
+		if sight_check:
+			if sight_check.collider.name == "Player":
+				player_in_sight = true
+				print("Player in line of sight!")
+			else:
+				player_in_sight = false
+				print("Player NOT in line of sight!")

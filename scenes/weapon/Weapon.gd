@@ -1,6 +1,7 @@
 extends Node2D
 
 export var hit_umbral = 0.5
+export(int) var damage = 3 
 var elpased_hit_time = 0
 
 signal hit
@@ -25,15 +26,28 @@ func behave_when_hitting():
 	emit_signal("hit_attempt_started")
 	$Pivot/SwordAnimationPlayer.play("SwordAttack")
 	$AttackTimer.start()
-	$Area2D/CollisionShape2D.disabled = false		
+	$HitBox/CollisionShape2D.disabled = false		
 
 
-func _on_Area2D_body_entered(_body):
-	print("HIT")
-	emit_signal("hit")
+func hit(damage = 1):
+	print("Player hit! Damage: ", damage)
+	emit_signal("hit",damage)
 
+
+#func _on_HitBox_body_entered(_body):
+#	print("Body entered! Dealt %d points of damage" % damage)
+#	if _body.has_method("hit"):
+#		_body.hit(damage)
+#		emit_signal("hit")
+
+
+func _on_HitBox_area_entered(area):
+	print("Hitbox Area entered! Dealt %d points of damage" % damage)
+	if area.owner.has_method("hit"):
+		area.owner.hit(damage)
+		emit_signal("hit")
 
 func _on_AttackTimer_timeout():
-	$Area2D/CollisionShape2D.disabled = true
+	$HitBox/CollisionShape2D.disabled = true
 	emit_signal("hit_attempt_ended")
 
