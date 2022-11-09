@@ -11,5 +11,7 @@ modulate = Color( 0.713726, 0.917647, 0.956863, 1 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 128
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 196615, 16, 0, 196625, 16, 0, 327690, 16, 0, 327694, 16, 0, 524298, 16, 0, 524302, 16, 0, 589831, 16, 0, 589841, 16, 0 )

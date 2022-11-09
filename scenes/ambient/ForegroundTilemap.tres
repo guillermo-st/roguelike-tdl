@@ -15,7 +15,7 @@ points = PoolVector2Array( 16, 4, 0, 4, 0, 0, 16, 0 )
 points = PoolVector2Array( 16, 4, 0, 4, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
-points = PoolVector2Array( 12, 32, 4, 32, 4, 28, 12, 28 )
+points = PoolVector2Array( 16, 32, 0, 32, 0, 24, 16, 24 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 0, 16, 0, 16, 0, 0, 16, 0, 16, 4, 4, 4, 4, 16 )
@@ -278,7 +278,7 @@ points = PoolVector2Array( 16, 16, 12, 16, 12, 0, 16, 0 )
 16/texture = ExtResource( 1 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 80, 80, 16, 48 )
+16/region = Rect2( 80, 84, 16, 32 )
 16/tile_mode = 0
 16/occluder_offset = Vector2( 0, 0 )
 16/navigation_offset = Vector2( 0, 0 )

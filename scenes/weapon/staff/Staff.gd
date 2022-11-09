@@ -1,7 +1,6 @@
 extends "res://scenes/weapon/Weapon.gd"
 
-var weapon_position = Vector2(-35, 0)
-var weapon_scale = Vector2(3, 3)
+var weapon_position = Vector2(-10, 0)
 var weapon_rotation = -270
 var particles = preload("res://scenes/weapon/staff/fireball/FireBall.tscn")
 
@@ -10,7 +9,6 @@ var particles = preload("res://scenes/weapon/staff/fireball/FireBall.tscn")
 func _ready():
 	self.hit_umbral = 0.4
 	self.position = weapon_position
-	self.scale = weapon_scale
 	self.rotation_degrees = weapon_rotation
 
 func behave_when_hitting():
