@@ -31,30 +31,29 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 16.0
-height = 26.0
+radius = 4.0
+height = 8.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 3
 script = ExtResource( 5 )
-max_speed = 1000
-acceleration = 4000
+max_speed = 250
 
 [node name="WeaponPivot" type="Node2D" parent="."]
-position = Vector2( 0, 22 )
+position = Vector2( 0, 6 )
 
 [node name="Weapon" parent="WeaponPivot" instance=ExtResource( 10 )]
-position = Vector2( 19, 20 )
+position = Vector2( 9, 9.53674e-07 )
 rotation = 0.286234
-scale = Vector2( 3, 3 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 22 )
+position = Vector2( 0, 6 )
 shape = SubResource( 2 )
 
 [connection signal="hit_attempt_ended" from="WeaponPivot/Weapon" to="." method="_on_Weapon_hit_attempt_ended"]
