@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/player/playerAssets/weapons/weapon_anime_sword.png" type="Texture" id=1]
+[ext_resource path="res://scenes/weapon/sword/assets/weapon_anime_sword.png" type="Texture" id=1]
 [ext_resource path="res://scenes/weapon/Weapon.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=3]

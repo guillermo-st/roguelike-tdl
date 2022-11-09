@@ -19,9 +19,8 @@ func _on_FireBall_body_entered(body):
 	#aca deberiamos sacar vida si body es un enemigo
 	is_moving = false
 	$Fire.emitting = false
-	$Explosion.emitting = true
-	$ExplosionTimer.start()
-
-
-func _on_ExplosionTimer_timeout():
+	var explotion = explosion_particles.instance()
+	explotion.emitting = true
+	get_parent().add_child(explotion)
+	explotion.global_position = self.global_position
 	queue_free()
