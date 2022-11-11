@@ -69,12 +69,25 @@ func fill_level_grid(x, y):
 		
 		remaining_depth -= 1
 
+#seal the level doors that lead to nowhere
+func configure_doors(level, x, y):
+	if level:
+		if not level_grid[y][x-1]:
+			level.get_node("baseLevel").seal_door("left")
+		if not level_grid[y][x+1]:
+			level.get_node("baseLevel").seal_door("right")
+		if not level_grid[y-1][x]:
+			level.get_node("baseLevel").seal_door("up")
+		if not level_grid[y+1][x]:
+			level.get_node("baseLevel").seal_door("down")
+
 #Take the levels from the level_grid and position them in the world
 func place_levels():
 	for i in range(level_grid.size() - 1):
 		for j in range (level_grid.size() -1):
 			var level = level_grid[i][j]
 			if level:
+				configure_doors(level, j, i)
 				level.global_position.x = j * level_width
 				level.global_position.y = i * level_height
 
