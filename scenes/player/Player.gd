@@ -5,9 +5,18 @@ export var acceleration = 1000
 var motion = Vector2.ZERO
 var is_attacking = false
 
+var sword = preload("res://scenes/weapon/Sword/Sword.tscn")
+var staff = preload("res://scenes/weapon/staff/Staff.tscn")
+var weapons = [sword, staff]
+enum {SWORD_INDEX, STAFF_INDEX}
+var selected_weapon_index = SWORD_INDEX
+
+var elapsed_weapon_change_time = 0
+var weapon_change_umbral = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
 	$WeaponPivot/Weapon.connect("hit_attempt_started", self, "_on_Weapon_hit_attempt_started")
 	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
 
@@ -16,7 +25,16 @@ func _physics_process(delta):
 	var axis = get_input_axis()
 	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	$WeaponPivot.rotation = mouse_direction.angle()
+	elapsed_weapon_change_time += delta
 	
+	if Input.is_action_just_released("ui_weapon_switch") and elapsed_weapon_change_time > weapon_change_umbral:
+		var previous_weapon = $WeaponPivot/Weapon
+		$WeaponPivot.remove_child(previous_weapon)
+		previous_weapon.queue_free()
+		selected_weapon_index = get_next_weapon_index(selected_weapon_index)
+		$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
+		elapsed_weapon_change_time = 0
+		
 	if axis == Vector2.ZERO && !self.is_attacking:
 		$AnimatedSprite.play("idle")
 		apply_friction(acceleration * delta)
@@ -56,3 +74,9 @@ func _on_Weapon_hit_attempt_started():
 	
 func _on_Weapon_hit_attempt_ended():
 	self.is_attacking = false
+	
+func get_next_weapon_index(previous_weapon_index):
+	var new_weapon_index = previous_weapon_index + 1
+	if previous_weapon_index == len(weapons) - 1:
+		new_weapon_index = 0
+	return new_weapon_index
