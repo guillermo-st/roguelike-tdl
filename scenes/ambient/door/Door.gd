@@ -2,29 +2,30 @@ extends Node2D
 
 signal player_entered_door
 
-var should_position_player
 var is_open
-var is_sealed
+var should_position_player #if true, the player is positioned in front of door on entering
+var is_interactable #if true, the door can be closed and opened. Otherwise the door is frozen on its last state.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	should_position_player = true
 	$Sprite.modulate.a = 0
-	is_open = true
-	is_sealed = false
+	should_position_player = true 
+	is_open = true 
+	is_interactable = true 
 
+func allow_interaction(val):
+	is_interactable = val
 
 func close():
-	if is_open and not is_sealed:
+	if is_open and is_interactable:
 		$DoorLock.global_position = self.global_position
 		$Tween.interpolate_property($Sprite, "global_position", $OpenPosition.global_position, self.global_position, 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 		$Tween.interpolate_property($Sprite, "modulate", Color(1,1,1,0), Color(1,1,1,1), 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT )
 		$Tween.start()
-		should_position_player = false
 		is_open = false
 
 func open():
-	if not is_open and not is_sealed:
+	if not is_open and is_interactable:
 		$DoorLock.global_position = $OpenPosition.position
 		$Tween.interpolate_property($Sprite, "global_position", self.global_position, $OpenPosition.global_position, 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 		$Tween.interpolate_property($Sprite, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT )
@@ -32,7 +33,8 @@ func open():
 		is_open = true
 
 func seal():
-	is_sealed = true
+	allow_interaction(false)
+	should_position_player = false
 	$Sprite.modulate = Color(0.3, 0.3, 0.3, 1)
 	$Sprite.global_position = self.global_position
 	$DoorLock.global_position = self.global_position

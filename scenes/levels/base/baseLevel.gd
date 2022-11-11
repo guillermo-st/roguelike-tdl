@@ -10,10 +10,12 @@ func _ready():
 func close_doors():
 	for door in doors.get_children():
 		door.close()
+		door.should_position_player = false
 
 func open_doors():
 	for door in doors.get_children():
 		door.open()
+		door.allow_interaction(false)
 
 func seal_door(direction):
 	match direction:
@@ -31,4 +33,4 @@ func _on_Area2D_body_entered(_body):
 
 func _on_Area2D_body_exited(body):
 	for door in doors.get_children():
-		door.should_position_player = true
+			door.should_position_player = true
