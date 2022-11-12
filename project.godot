@@ -91,16 +91,10 @@ ui_weapon_switch={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Monster"
-2d_physics/layer_8="Wall"
-
-[layer_names]
-
-2d_physics/layer_1="Wall"
-2d_physics/layer_2="Player"
 2d_physics/layer_3="Weapon"
-2d_physics/layer_4="Monster"
 2d_physics/layer_5="MonsterHitBox"
 2d_physics/layer_6="MonsterSight"
+2d_physics/layer_8="Wall"
 
 [physics]
 
