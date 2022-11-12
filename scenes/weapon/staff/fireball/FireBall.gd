@@ -33,5 +33,4 @@ func _on_FireBall_body_entered(body):
 func _on_FireBall_area_entered(area):
 	if area.owner.has_method("hit"):
 		area.owner.hit(damage)
-		emit_signal("hit")
 	explode()

@@ -104,7 +104,7 @@ func _on_Sight_body_exited(body):
 func sight_check():
 	if player_in_range:
 		var space_state = get_world_2d().direct_space_state
-		var sight_check = space_state.intersect_ray(position, player.position, [self], 2)
+		var sight_check = space_state.intersect_ray(position, player.position, [self], collision_mask)
 		
 		if sight_check:
 			if sight_check.collider.name == "Player":
