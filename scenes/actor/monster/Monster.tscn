@@ -41,8 +41,8 @@ extents = Vector2( 6, 8 )
 radius = 300.0
 
 [node name="Monster" type="KinematicBody2D" groups=["Monster"]]
-collision_layer = 8
-collision_mask = 3
+collision_layer = 2
+collision_mask = 129
 script = ExtResource( 5 )
 
 [node name="Pivot" type="Position2D" parent="."]
@@ -70,7 +70,6 @@ shape = SubResource( 18 )
 
 [node name="AreaHitBox" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="AreaHitBox"]
 position = Vector2( 0, -5 )
@@ -88,7 +87,6 @@ position = Vector2( 0, -5 )
 
 [node name="Sight" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource( 20 )
