@@ -5,15 +5,14 @@ signal revive
 export var speed = 40
 var disabled = false setget set_disabled
 var velocity = Vector2.ZERO
+var target
+var target_in_sight = false
+var WALL_COLLISION_LAYER = 128
 
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
-onready var player = get_parent().get_node("Player")
-
-var player_in_range
-var player_in_sight
 
 func hit(damage):
 	life_bar.value -= damage
@@ -91,25 +90,22 @@ func _on_AreaHitBox_body_entered(body):
 
 
 func _on_Sight_body_entered(body):
-	if body == player:
-		print("Player in sight range, run!")
-		player_in_range = true
+	target = body
+	print("Player in sight range, run!")
 
 
 func _on_Sight_body_exited(body):
-	if body == player:
-		print("Player no longer in sight range")
-		player_in_range = false
+	target = null
+	print("Player no longer in sight range")
 		
 func sight_check():
-	if player_in_range:
+	if target:
 		var space_state = get_world_2d().direct_space_state
-		var sight_check = space_state.intersect_ray(position, player.position, [self], collision_mask)
-		
+		var sight_check = space_state.intersect_ray(position, target.position, [self], WALL_COLLISION_LAYER)
+
 		if sight_check:
-			if sight_check.collider.name == "Player":
-				player_in_sight = true
-				print("Player in line of sight!")
-			else:
-				player_in_sight = false
-				print("Player NOT in line of sight!")
+			target_in_sight = false
+			print("Player NOT in line of sight!")
+		else:
+			target_in_sight = true
+			print("Player in line of sight!")
