@@ -10,9 +10,7 @@ var staff = preload("res://scenes/weapon/staff/Staff.tscn")
 var weapons = [sword, staff]
 enum {SWORD_INDEX, STAFF_INDEX}
 var selected_weapon_index = SWORD_INDEX
-
-var elapsed_weapon_change_time = 0
-var weapon_change_umbral = 0.2
+var can_switch_weapon = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +23,6 @@ func _physics_process(delta):
 	var axis = get_input_axis()
 	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	$WeaponPivot.rotation = mouse_direction.angle()
-	elapsed_weapon_change_time += delta
 	
 	if self.can_change_weapon():
 		self.change_weapon()	
@@ -69,16 +66,19 @@ func get_next_weapon_index(previous_weapon_index):
 
 
 func can_change_weapon():
-	return Input.is_action_just_released("ui_weapon_switch") and elapsed_weapon_change_time > weapon_change_umbral
+	return Input.is_action_just_released("ui_weapon_switch") and self.can_switch_weapon
 	
 
 func change_weapon():
+	can_switch_weapon = false
+	$WeaponSwitchTimer.start()
 	var previous_weapon = $WeaponPivot/Weapon
 	$WeaponPivot.remove_child(previous_weapon)
 	previous_weapon.queue_free()
 	selected_weapon_index = get_next_weapon_index(selected_weapon_index)
 	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
-	elapsed_weapon_change_time = 0
+	$WeaponPivot/Weapon.connect("hit_attempt_started", self, "_on_Weapon_hit_attempt_started")
+	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
 	
 	
 func is_idle(input_axis):
@@ -102,3 +102,7 @@ func look_towards_mouse(mouse_direction):
 	elif mouse_direction.x < 0 and not $AnimatedSprite.flip_h:
 		$AnimatedSprite.flip_h = true
 		$WeaponPivot.scale.y = -$WeaponPivot.scale.y
+
+
+func _on_WeaponSwitchTimer_timeout():
+	self.can_switch_weapon = true

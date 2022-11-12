@@ -49,3 +49,8 @@ animation = "idle"
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 6 )
 shape = SubResource( 2 )
+
+[node name="WeaponSwitchTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="WeaponSwitchTimer" to="." method="_on_WeaponSwitchTimer_timeout"]
