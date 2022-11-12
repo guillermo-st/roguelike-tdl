@@ -16,7 +16,7 @@ func _on_Area2D_body_entered(_body):
 
 
 func behave_when_hitting():
-	self.elpased_hit_time = 0
+	self.elapsed_hit_time = 0
 	emit_signal("hit_attempt_started")
 	$Pivot/SwordAnimationPlayer.play("SwordAttack")
 	$AttackTimer.start()
