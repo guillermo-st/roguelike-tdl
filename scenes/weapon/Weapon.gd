@@ -18,22 +18,3 @@ func _process(delta):
 func behave_when_hitting():
 	pass
 
-
-func hit(damage = 1):
-	print("Player hit! Damage: ", damage)
-	emit_signal("hit",damage)
-
-
-#func _on_HitBox_body_entered(_body):
-#	print("Body entered! Dealt %d points of damage" % damage)
-#	if _body.has_method("hit"):
-#		_body.hit(damage)
-#		emit_signal("hit")
-
-
-func _on_HitBox_area_entered(area):
-	print("Hitbox Area entered! Dealt %d points of damage" % damage)
-	if area.owner.has_method("hit"):
-		area.owner.hit(damage)
-		emit_signal("hit")
-

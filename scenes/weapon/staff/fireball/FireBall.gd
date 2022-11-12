@@ -1,6 +1,7 @@
 extends Area2D
 
 export var speed = 200
+export var damage = 2
 var rotation_direction
 var velocity
 var explosion_particles = preload("res://scenes/particles/Explosion.tscn")
@@ -15,8 +16,7 @@ func _physics_process(delta):
 		global_position += (velocity.normalized() * delta * speed)
 
 
-func _on_FireBall_body_entered(body):
-	#aca deberiamos sacar vida si body es un enemigo
+func explode():
 	is_moving = false
 	$Fire.emitting = false
 	var explotion = explosion_particles.instance()
@@ -24,3 +24,14 @@ func _on_FireBall_body_entered(body):
 	get_parent().add_child(explotion)
 	explotion.global_position = self.global_position
 	queue_free()
+
+
+func _on_FireBall_body_entered(body):
+	explode()
+	
+
+func _on_FireBall_area_entered(area):
+	if area.owner.has_method("hit"):
+		area.owner.hit(damage)
+		emit_signal("hit")
+	explode()
