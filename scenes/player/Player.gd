@@ -5,9 +5,16 @@ export var acceleration = 1000
 var motion = Vector2.ZERO
 var is_attacking = false
 
+var sword = preload("res://scenes/weapon/Sword/Sword.tscn")
+var staff = preload("res://scenes/weapon/staff/Staff.tscn")
+var weapons = [sword, staff]
+enum {SWORD_INDEX, STAFF_INDEX}
+var selected_weapon_index = SWORD_INDEX
+var can_switch_weapon = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
 	$WeaponPivot/Weapon.connect("hit_attempt_started", self, "_on_Weapon_hit_attempt_started")
 	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
 
@@ -17,19 +24,10 @@ func _physics_process(delta):
 	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	$WeaponPivot.rotation = mouse_direction.angle()
 	
-	if axis == Vector2.ZERO && !self.is_attacking:
-		$AnimatedSprite.play("idle")
-		apply_friction(acceleration * delta)
-	else:
-		if !self.is_attacking:
-			$AnimatedSprite.play("run")
-		apply_movement(axis * acceleration * delta)
-	if mouse_direction.x > 0 and $AnimatedSprite.flip_h:
-		$AnimatedSprite.flip_h = false
-		$WeaponPivot.scale.y = -$WeaponPivot.scale.y	
-	elif mouse_direction.x < 0 and not $AnimatedSprite.flip_h:
-		$AnimatedSprite.flip_h = true
-		$WeaponPivot.scale.y = -$WeaponPivot.scale.y	
+	if self.can_change_weapon():
+		self.change_weapon()	
+	self.behave_according_to_input(axis, delta)
+	self.look_towards_mouse(mouse_direction)
 	motion = move_and_slide(motion)
 
 func get_input_axis():
@@ -45,6 +43,7 @@ func apply_friction(an_amount_of_friction):
 	else:
 		motion = Vector2.ZERO
 
+
 func apply_movement(an_ammount_of_acceleration):
 	motion += an_ammount_of_acceleration
 	motion = motion.limit_length(max_speed)
@@ -53,6 +52,57 @@ func apply_movement(an_ammount_of_acceleration):
 func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
 	$AnimatedSprite.play("hit")
+
 	
 func _on_Weapon_hit_attempt_ended():
 	self.is_attacking = false
+
+	
+func get_next_weapon_index(previous_weapon_index):
+	var new_weapon_index = previous_weapon_index + 1
+	if previous_weapon_index == len(weapons) - 1:
+		new_weapon_index = 0
+	return new_weapon_index
+
+
+func can_change_weapon():
+	return Input.is_action_just_released("ui_weapon_switch") and self.can_switch_weapon
+	
+
+func change_weapon():
+	can_switch_weapon = false
+	$WeaponSwitchTimer.start()
+	var previous_weapon = $WeaponPivot/Weapon
+	$WeaponPivot.remove_child(previous_weapon)
+	previous_weapon.queue_free()
+	selected_weapon_index = get_next_weapon_index(selected_weapon_index)
+	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
+	$WeaponPivot/Weapon.connect("hit_attempt_started", self, "_on_Weapon_hit_attempt_started")
+	$WeaponPivot/Weapon.connect("hit_attempt_ended", self, "_on_Weapon_hit_attempt_ended")
+	
+	
+func is_idle(input_axis):
+	return input_axis == Vector2.ZERO && !self.is_attacking
+
+
+func behave_according_to_input(input_axis, delta):
+	if self.is_idle(input_axis):
+		$AnimatedSprite.play("idle")
+		apply_friction(acceleration * delta)
+	else:
+		if !self.is_attacking:
+			$AnimatedSprite.play("run")
+		apply_movement(input_axis * acceleration * delta)
+		
+
+func look_towards_mouse(mouse_direction):
+	if mouse_direction.x > 0 and $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = false
+		$WeaponPivot.scale.y = -$WeaponPivot.scale.y	
+	elif mouse_direction.x < 0 and not $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = true
+		$WeaponPivot.scale.y = -$WeaponPivot.scale.y
+
+
+func _on_WeaponSwitchTimer_timeout():
+	self.can_switch_weapon = true
