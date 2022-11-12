@@ -1,6 +1,6 @@
 extends Area2D
 
-export var speed = 800
+export var speed = 200
 var rotation_direction
 var velocity
 var explosion_particles = preload("res://scenes/particles/Explosion.tscn")
