@@ -66,6 +66,7 @@ func hit(damage = 1):
 	
 func push(from,force):
 	push_velocity = (global_position-from).normalized()*force
+	$PushTimer.start()
 
 
 func _on_Weapon_hit_attempt_ended():
@@ -120,3 +121,7 @@ func look_towards_mouse(mouse_direction):
 
 func _on_WeaponSwitchTimer_timeout():
 	self.can_switch_weapon = true
+
+
+func _on_PushTimer_timeout():
+	push_velocity = Vector2()
