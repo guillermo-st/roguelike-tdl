@@ -17,10 +17,7 @@ func _ready():
 	
 	
 func _on_HitBox_area_entered(area):
-	print("Hitbox Area entered! Dealt %d points of damage" % damage)
-	if area.owner.has_method("hit"):
-		area.owner.hit(damage)
-		emit_signal("hit")
+	area.owner.hit(damage)
 
 
 func behave_when_hitting():

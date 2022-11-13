@@ -10,7 +10,7 @@ height = 4.0
 [node name="FireBall" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
-collision_mask = 146
+collision_mask = 144
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
