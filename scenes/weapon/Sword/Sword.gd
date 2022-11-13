@@ -12,12 +12,12 @@ func _ready():
 	
 	
 #func _on_Area2D_body_entered(_body):
-#	print("HIT")
-#	emit_signal("hit")
+#	print("take_damage")
+#	emit_signal("take_damage")
 	
 	
 func _on_HitBox_area_entered(area):
-	area.owner.hit(damage)
+	area.owner.take_damage(damage)
 
 
 func behave_when_hitting():

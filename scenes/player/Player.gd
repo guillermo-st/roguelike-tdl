@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal hit(damage)
+signal take_damage(damage)
 
 export var max_speed = 500
 export var acceleration = 1000
@@ -55,13 +55,13 @@ func apply_movement(an_ammount_of_acceleration):
 
 func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
-	$AnimatedSprite.play("hit")
+	$AnimatedSprite.play("take_damage")
 
 	
 
-func hit(damage = 1):
-	print("Player hit! Damage: ", damage)
-	emit_signal("hit",damage)
+func take_damage(damage = 1):
+	print("Player take_damage! Damage: ", damage)
+	emit_signal("take_damage",damage)
 	
 	
 func push(from,force):

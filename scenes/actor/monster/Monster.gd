@@ -14,7 +14,7 @@ onready var tween:Tween = $Tween
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
 
-func hit(damage):
+func take_damage(damage):
 	life_bar.value -= damage
 	hit_fx()
 	if !life_bar.value:
@@ -84,7 +84,7 @@ func _on_axis_changed(axis:Vector2):
 
 
 func _on_AreaHitBox_body_entered(body):
-	body.hit()
+	body.take_damage()
 	body.push(global_position,150)
 
 
