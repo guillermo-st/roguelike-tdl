@@ -84,19 +84,16 @@ func _on_axis_changed(axis:Vector2):
 
 
 func _on_AreaHitBox_body_entered(body):
-	print("Entered monster area hitbox!")
 	body.hit()
-#	body.push(global_position,50)
+	body.push(global_position,150)
 
 
 func _on_Sight_body_entered(body):
 	target = body
-	print("Player in sight range, run!")
 
 
 func _on_Sight_body_exited(body):
 	target = null
-	print("Player no longer in sight range")
 		
 func sight_check():
 	if target:
@@ -105,7 +102,5 @@ func sight_check():
 
 		if sight_check:
 			target_in_sight = false
-			print("Player NOT in line of sight!")
 		else:
 			target_in_sight = true
-			print("Player in line of sight!")
