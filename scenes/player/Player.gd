@@ -55,7 +55,7 @@ func apply_movement(an_ammount_of_acceleration):
 
 func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
-	$AnimatedSprite.play("take_damage")
+	$AnimatedSprite.play("hit")
 
 	
 
