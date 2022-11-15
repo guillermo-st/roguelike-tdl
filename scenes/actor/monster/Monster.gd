@@ -22,6 +22,8 @@ func take_damage(damage):
 
 
 func _physics_process(delta):
+	if target and target_in_sight:
+		move_towards_target()
 	move_and_slide(velocity)
 	sight_check()
 
@@ -48,7 +50,7 @@ func set_disabled(v):
 func hit_fx():
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ONE,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	tween.interpolate_property(sprite,"modulate",Color(50,50,50),Color.white,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
-	$SndHit.play()
+	#$SndHit.play()
 	tween.start()
 
 
@@ -60,26 +62,14 @@ func death():
 
 
 func _on_axis_changed(axis:Vector2):
-	var direction = axis.angle()
-	if direction:
-		sprite.playing = true
-		if abs(axis.x) > abs(axis.y):
-			if axis.x > 0:
-				sprite.animation = "Right"
-#				sprite.rotation = direction
-			else:
-				sprite.animation = "Left"
-#				sprite.rotation = direction - PI
+	if not target and not target_in_sight:
+		var direction = axis.angle()
+		if direction:
+			sprite.playing = true
+			decide_animation(axis)
 		else:
-			if axis.y > 0:
-				sprite.animation = "Down"
-#				sprite.rotation = direction - PI/2
-			else:
-				sprite.animation = "Up"
-#				sprite.rotation = direction + PI/2
-	else:
-		sprite.playing = false
-	velocity = axis*speed
+			sprite.playing = false
+		velocity = axis*speed
 	
 
 
@@ -94,13 +84,29 @@ func _on_Sight_body_entered(body):
 
 func _on_Sight_body_exited(body):
 	target = null
-		
+
 func sight_check():
 	if target:
 		var space_state = get_world_2d().direct_space_state
-		var sight_check = space_state.intersect_ray(position, target.position, [self], WALL_COLLISION_LAYER)
+		var sight_check = space_state.intersect_ray(global_position, target.position, [self], WALL_COLLISION_LAYER)
 
-		if sight_check:
-			target_in_sight = false
+		target_in_sight = not sight_check
+
+
+func move_towards_target():
+	sprite.playing = true
+	var target_axis = (target.global_position - self.global_position).normalized()
+	decide_animation(target_axis)
+	velocity =  target_axis * speed
+	
+func decide_animation(movement_axis):
+	if abs(movement_axis.x) > abs(movement_axis.y):
+		if movement_axis.x > 0:
+			sprite.animation = "Right"
 		else:
-			target_in_sight = true
+			sprite.animation = "Left"
+	else:
+		if movement_axis.y > 0:
+			sprite.animation = "Down"
+		else:
+			sprite.animation = "Up"
