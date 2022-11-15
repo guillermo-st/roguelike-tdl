@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
+signal take_damage(damage)
+
 export var max_speed = 500
 export var acceleration = 1000
+var push_velocity:Vector2 = Vector2()
 var motion = Vector2.ZERO
 var is_attacking = false
 
@@ -28,7 +31,8 @@ func _physics_process(delta):
 		self.change_weapon()	
 	self.behave_according_to_input(axis, delta)
 	self.look_towards_mouse(mouse_direction)
-	motion = move_and_slide(motion)
+	push_velocity = push_velocity.linear_interpolate(Vector2.ZERO,0.1)
+	motion = move_and_slide((motion+push_velocity).floor())
 
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -54,6 +58,17 @@ func _on_Weapon_hit_attempt_started():
 	$AnimatedSprite.play("hit")
 
 	
+
+func take_damage(damage = 1):
+	print("Player take_damage! Damage: ", damage)
+	emit_signal("take_damage",damage)
+	
+	
+func push(from,force):
+	push_velocity = (global_position-from).normalized()*force
+	$PushTimer.start()
+
+
 func _on_Weapon_hit_attempt_ended():
 	self.is_attacking = false
 
@@ -106,3 +121,7 @@ func look_towards_mouse(mouse_direction):
 
 func _on_WeaponSwitchTimer_timeout():
 	self.can_switch_weapon = true
+
+
+func _on_PushTimer_timeout():
+	push_velocity = Vector2()

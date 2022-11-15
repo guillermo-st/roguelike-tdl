@@ -9,6 +9,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.global_position = $LevelGenerator/InitialLevel/baseLevel/CenterAnchor.global_position
+	$Player.connect("take_damage", $Hud, "on_player_hit")
 	$CameraController/Camera2D.global_position = $Player.global_position
 
 

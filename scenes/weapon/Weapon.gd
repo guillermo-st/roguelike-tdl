@@ -3,7 +3,7 @@ extends Node2D
 export var hit_umbral = 0.5
 var elapsed_hit_time = 1
 
-signal hit
+signal take_damage
 signal hit_attempt_started
 signal hit_attempt_ended
 
@@ -17,7 +17,4 @@ func _process(delta):
 
 func behave_when_hitting():
 	pass
-
-
-
 

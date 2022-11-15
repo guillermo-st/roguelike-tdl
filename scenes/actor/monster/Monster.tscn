@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://hud/LifeBarMiniProgress.png" type="Texture" id=1]
 [ext_resource path="res://hud/LifeBarMiniUnder.png" type="Texture" id=2]
@@ -37,8 +37,12 @@ extents = Vector2( 5, 3 )
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 6, 8 )
 
+[sub_resource type="CircleShape2D" id=20]
+radius = 300.0
+
 [node name="Monster" type="KinematicBody2D" groups=["Monster"]]
-collision_layer = 16
+collision_layer = 2
+collision_mask = 129
 script = ExtResource( 5 )
 
 [node name="Pivot" type="Position2D" parent="."]
@@ -65,8 +69,7 @@ texture_progress = ExtResource( 1 )
 shape = SubResource( 18 )
 
 [node name="AreaHitBox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 4
+collision_layer = 16
 
 [node name="Shape" type="CollisionShape2D" parent="AreaHitBox"]
 position = Vector2( 0, -5 )
@@ -82,8 +85,16 @@ stream = ExtResource( 6 )
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 0, -5 )
 
+[node name="Sight" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+shape = SubResource( 20 )
+
 [connection signal="revive" from="." to="RandomMoveBehavior" method="reset"]
 [connection signal="body_entered" from="AreaHitBox" to="." method="_on_AreaHitBox_body_entered"]
 [connection signal="axis_changed" from="RandomMoveBehavior" to="." method="_on_axis_changed"]
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="RandomMoveBehavior" method="set_disabled" binds= [ false ]]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="RandomMoveBehavior" method="set_disabled" binds= [ true ]]
+[connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]
