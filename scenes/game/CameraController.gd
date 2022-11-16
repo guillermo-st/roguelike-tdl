@@ -8,7 +8,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SignalBus.connect("player_entered_level", self, "move_camera")
+	SignalBus.connect("camera_interest_shifted", self, "move_camera")
 
 
 
