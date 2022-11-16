@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
-signal revive
+signal monster_died
 
 export var speed = 40
-var disabled = false setget set_disabled
 var velocity = Vector2.ZERO
 var target
 var target_in_sight = false
 var WALL_COLLISION_LAYER = 128
+var active = false
 
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
@@ -22,30 +22,11 @@ func take_damage(damage):
 
 
 func _physics_process(delta):
-	if target and target_in_sight:
-		move_towards_target()
-	move_and_slide(velocity)
-	sight_check()
-
-
-func revive():
-	if disabled:
-		emit_signal("revive")
-		life_bar.value = life_bar.max_value
-		global_position = start_pos
-		sprite.scale = Vector2.ONE
-		self.disabled = false
-
-
-func set_disabled(v):
-	disabled = v
-	visible = !v
-	if disabled:
-		_on_axis_changed(Vector2.ZERO)
-	$Shape.set_deferred("disabled",v)
-	$AreaHitBox/Shape.set_deferred("disabled",v)
-	$Sight/CollisionShape2D.set_deferred("disabled", v)
-
+	if active:
+		if target and target_in_sight:
+			move_towards_target()
+		move_and_slide(velocity)
+		sight_check()
 
 func hit_fx():
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ONE,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
@@ -55,10 +36,18 @@ func hit_fx():
 
 
 func death():
+	$AreaHitBox.monitoring = false
+	emit_signal("monster_died")
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ZERO,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	
+	remove_child(tween)
+	sprite.add_child(tween)
+	$Pivot.remove_child(sprite)
+	get_parent().add_child(sprite)
+	sprite.global_position = $Pivot.global_position
 	tween.start()
-	yield(tween,"tween_all_completed")
-	self.disabled = true
+	
+	queue_free()
 
 
 func _on_axis_changed(axis:Vector2):
@@ -72,19 +61,17 @@ func _on_axis_changed(axis:Vector2):
 		velocity = axis*speed
 	
 
-
 func _on_AreaHitBox_body_entered(body):
 	body.take_damage()
-	body.push(global_position,150)
-
+	body.push(global_position,75)
 
 func _on_Sight_body_entered(body):
 	target = body
 
-
 func _on_Sight_body_exited(body):
 	target = null
 	target_in_sight = false
+
 
 func sight_check():
 	if target:

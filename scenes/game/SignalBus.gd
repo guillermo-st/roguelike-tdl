@@ -1,7 +1,7 @@
 extends Node
 
 
-signal player_entered_level(level_pos)
+signal camera_interest_shifted(level_pos)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
