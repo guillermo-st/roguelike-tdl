@@ -2,14 +2,16 @@ extends Node
 
 signal all_monsters_defeated
 
-var monsters_left 
+onready var wakeup_timer = $MonsterWakeupTimer
+var monsters_left = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var monsters = get_children()
-	monsters_left = monsters.size()
 	for monster in monsters:
-		monster.connect("monster_died", self, "decrease_monsters_left")
+		if monster.is_in_group("monsters"):
+			monsters_left += 1
+			monster.connect("monster_died", self, "decrease_monsters_left")
 
 func decrease_monsters_left():
 	monsters_left -= 1
@@ -18,12 +20,10 @@ func decrease_monsters_left():
 		self.queue_free()
 
 func wake_monsters_up():
+	wakeup_timer.start()
+
+func _on_MonsterWakeupTimer_timeout():
 	var monsters = get_children()
 	for monster in monsters:
 		if monster.is_in_group("monsters"):
 			monster.active = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
