@@ -1,5 +1,7 @@
 extends Node2D
 
+signal player_entered_level
+
 onready var doors = $Doors
 
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +31,8 @@ func seal_door(direction):
 			$Doors/DoorLeft.seal()
 
 func _on_Area2D_body_entered(_body):
-	SignalBus.emit_signal("player_entered_level", $CenterAnchor.global_position)
+	emit_signal("player_entered_level")
+	SignalBus.emit_signal("camera_interest_shifted", $CenterAnchor.global_position)
 
 func _on_Area2D_body_exited(body):
 	for door in doors.get_children():
