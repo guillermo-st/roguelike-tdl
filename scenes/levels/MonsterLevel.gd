@@ -7,8 +7,6 @@ var monster_controller
 func _ready():
 	monster_controller = get_node_or_null("MonsterController")
 	if monster_controller:
-		monster_controller.connect("all_monsters_defeated", self, "open_doors")
+		monster_controller.connect("all_monsters_defeated", base_level, "open_doors")
 		base_level.connect("player_entered_level", monster_controller, "wake_monsters_up" )
 
-func open_doors():
-	$baseLevel.open_doors()
