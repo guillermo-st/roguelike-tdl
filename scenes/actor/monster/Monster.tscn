@@ -7,6 +7,9 @@
 [ext_resource path="res://scenes/actor/monster/SndDeath.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/actor/movement/RandomMoveBehavior.tscn" type="PackedScene" id=7]
 
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 5, 3 )
+
 [sub_resource type="SpriteFrames" id=17]
 resource_local_to_scene = true
 animations = [ {
@@ -31,19 +34,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 5, 3 )
-
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 6, 8 )
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 300.0
 
-[node name="Monster" type="KinematicBody2D" groups=["Monster"]]
+[node name="Monster" type="KinematicBody2D" groups=["monsters"]]
 collision_layer = 2
-collision_mask = 129
+collision_mask = 128
 script = ExtResource( 5 )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 18 )
 
 [node name="Pivot" type="Position2D" parent="."]
 
@@ -65,9 +68,6 @@ value = 6.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 
-[node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 18 )
-
 [node name="AreaHitBox" type="Area2D" parent="."]
 collision_layer = 16
 
@@ -79,6 +79,7 @@ shape = SubResource( 19 )
 
 [node name="SndHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -30.0
 
 [node name="RandomMoveBehavior" parent="." instance=ExtResource( 7 )]
 
@@ -91,7 +92,6 @@ collision_layer = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource( 20 )
 
-[connection signal="revive" from="." to="RandomMoveBehavior" method="reset"]
 [connection signal="body_entered" from="AreaHitBox" to="." method="_on_AreaHitBox_body_entered"]
 [connection signal="axis_changed" from="RandomMoveBehavior" to="." method="_on_axis_changed"]
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="RandomMoveBehavior" method="set_disabled" binds= [ false ]]
