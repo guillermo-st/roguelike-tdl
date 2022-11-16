@@ -10,7 +10,7 @@ height = 4.0
 [node name="FireBall" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
-collision_mask = 130
+collision_mask = 144
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,4 +19,5 @@ shape = SubResource( 1 )
 
 [node name="Fire" parent="." instance=ExtResource( 1 )]
 
+[connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_FireBall_body_entered"]
