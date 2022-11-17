@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/ambient/exit/doors_leaf_open.png" type="Texture" id=1]
+[ext_resource path="res://scenes/ambient/exit/doors_leaf_closed.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ambient/exit/Exit.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ambient/exit/floor_ladder.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "closed",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "open",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 12 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 2 )
+
+[node name="Exit" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, 4 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.0666667, 0.0431373, 0.0431373, 0.623529 )
+position = Vector2( 5.36442e-07, 5.36442e-07 )
+scale = Vector2( 0.4375, 0.4375 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Lock" type="StaticBody2D" parent="."]
+position = Vector2( 0, 14 )
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lock"]
+shape = SubResource( 3 )
+
+[node name="Borders" type="StaticBody2D" parent="."]
+collision_layer = 128
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders"]
+polygon = PoolVector2Array( -12, 12, -12, 12, -16, 12, -16, -14, -14, -16, 14, -16, 16, -14, 16, 12, 12, 12, 12, -12, -12, -12 )
+
+[connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]
