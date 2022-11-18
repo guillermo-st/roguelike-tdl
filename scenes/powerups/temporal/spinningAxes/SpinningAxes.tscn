@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/powerups/temporal/spinningAxes/SpinningAxes.gd" type="Script" id=1]
+[ext_resource path="res://scenes/powerups/temporal/spinningAxes/weapon_cleaver.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 7.5 )
+
+[node name="SpinningAxes" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Axe" type="Node2D" parent="."]
+position = Vector2( 0, -28 )
+
+[node name="Sprite" type="Sprite" parent="Axe"]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Axe"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe/Area2D"]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="Axe2" type="Node2D" parent="."]
+position = Vector2( 0, 28 )
+rotation = -3.14159
+
+[node name="Sprite2" type="Sprite" parent="Axe2"]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Axe2"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe2/Area2D"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 2 )
+
+[node name="Axe3" type="Node2D" parent="."]
+position = Vector2( -28, 0 )
+rotation = -1.5708
+
+[node name="Sprite3" type="Sprite" parent="Axe3"]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Axe3"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe3/Area2D"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 3 )
+
+[node name="Axe4" type="Node2D" parent="."]
+position = Vector2( 28, 0 )
+rotation = 1.5708
+
+[node name="Sprite4" type="Sprite" parent="Axe4"]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Axe4"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe4/Area2D"]
+position = Vector2( -2.38419e-07, -2.5 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Axe/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Axe2/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Axe3/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Axe4/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
