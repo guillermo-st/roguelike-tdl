@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flask_big_blue.png-a48776cb60e2bd27fcb302983dd708dd.stex"
+path="res://.import/skull.png-a105ce16e8b3b743972f53ca9949ee81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/items/itemsAssets/flask_big_blue.png"
-dest_files=[ "res://.import/flask_big_blue.png-a48776cb60e2bd27fcb302983dd708dd.stex" ]
+source_file="res://scenes/items/itemsAssets/skull.png"
+dest_files=[ "res://.import/skull.png-a105ce16e8b3b743972f53ca9949ee81.stex" ]
 
 [params]
 
