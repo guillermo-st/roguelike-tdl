@@ -9,10 +9,13 @@ var target_in_sight = false
 var WALL_COLLISION_LAYER = 128
 var active = false
 
+var health_item = preload("res://scenes/items/healthItem/HealthItem.tscn")
+
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
+onready var root = get_tree().get_root()
 
 func take_damage(damage):
 	life_bar.value -= damage
@@ -38,6 +41,7 @@ func hit_fx():
 func death():
 	$AreaHitBox.monitoring = false
 	emit_signal("monster_died")
+	drop_item()
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ZERO,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	
 	remove_child(tween)
@@ -99,3 +103,12 @@ func decide_animation(movement_axis):
 			sprite.animation = "Down"
 		else:
 			sprite.animation = "Up"
+
+
+func drop_item():
+	var random_number = randf()
+	if random_number > 0.8:
+		var health_potion = health_item.instance()
+		health_potion.global_position = self.global_position
+		root.call_deferred("add_child", health_potion)
+	
