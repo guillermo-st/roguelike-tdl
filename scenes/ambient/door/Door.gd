@@ -2,6 +2,8 @@ extends Node2D
 
 signal player_entered_door
 
+export var doorlock_offset = 0
+
 var is_open
 var should_position_player #if true, the player is positioned in front of door on entering
 var is_interactable #if true, the door can be closed and opened. Otherwise the door is frozen on its last state.
@@ -9,6 +11,7 @@ var is_interactable #if true, the door can be closed and opened. Otherwise the d
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.modulate.a = 0
+	$DoorLock/CollisionShape2D.position.x += doorlock_offset
 	should_position_player = true 
 	is_open = true 
 	is_interactable = true 
