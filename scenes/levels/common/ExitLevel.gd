@@ -8,7 +8,6 @@ onready var exit_door_timer = $ExitDoorTimer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$baseLevel.connect("player_entered_level", self, "setup_exit")
-	$baseLevel/Doors/DoorUp.should_position_player = false
 	
 	torch_timer.wait_time = 1.0/(torches.size() + 1)
 	
