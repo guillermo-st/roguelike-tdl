@@ -10,6 +10,7 @@ var WALL_COLLISION_LAYER = 128
 var active = false
 
 var health_item = preload("res://scenes/items/healthItem/HealthItem.tscn")
+var spinning_axes_item = preload("res://scenes/items/spinningAxesItem/SpinningAxesItem.tscn")
 
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
@@ -107,8 +108,12 @@ func decide_animation(movement_axis):
 
 func drop_item():
 	var random_number = randf()
-	if random_number > 0.8:
+	if random_number > 0.8 and random_number < 0.9 :
 		var health_potion = health_item.instance()
 		health_potion.global_position = self.global_position
 		root.call_deferred("add_child", health_potion)
+	elif random_number > 0.9:
+		var skull = spinning_axes_item.instance()
+		skull.global_position = self.global_position
+		root.call_deferred("add_child", skull)		
 	
