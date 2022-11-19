@@ -78,7 +78,7 @@ position = Vector2( -2.38419e-07, -2.5 )
 shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="body_entered" from="Axe/Area2D" to="." method="_on_Area2D_body_entered"]
