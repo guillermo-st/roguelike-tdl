@@ -32,6 +32,12 @@ one_shot = true
 [node name="Torch" parent="Torches" instance=ExtResource( 5 )]
 position = Vector2( 48, 64 )
 
+[node name="Torch5" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 172, 136 )
+
+[node name="Torch6" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 228, 136 )
+
 [node name="Torch3" parent="Torches" instance=ExtResource( 5 )]
 position = Vector2( 48, 176 )
 
