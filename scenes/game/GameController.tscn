@@ -15,6 +15,6 @@ script = ExtResource( 4 )
 level_dir = "res://scenes/levels/"
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 688, 360 )
+position = Vector2( -32, -32 )
 
 [node name="Hud" parent="." instance=ExtResource( 6 )]

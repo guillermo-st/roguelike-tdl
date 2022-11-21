@@ -30,9 +30,10 @@ func generate_zone():
 	var initial_level = initial_level_path.instance()
 	zone.add_child(initial_level)
 	grid[level_depth - 1][level_depth -1] = initial_level
+	
 	for _r in range(repeats + 1):
 		fill_level_grid(grid, zone, level_depth - 1, level_depth - 1)
-	
+		
 	place_levels(grid, zone)
 	var initial_pos = initial_level.get_node("baseLevel/CenterAnchor").global_position
 	remove_child(zone)
@@ -86,7 +87,7 @@ func fill_level_grid(grid, zone, start_x, start_y):
 
 #Take the levels from the level_grid and position them in the world
 func place_levels(grid, zone):
-	place_exit_level(grid, zone)
+	generate_exit_level(grid, zone)
 	for i in range(grid.size() - 1):
 		for j in range (grid.size() -1):
 			var level = grid[i][j]
@@ -96,7 +97,7 @@ func place_levels(grid, zone):
 				level.global_position.y = zone.global_position.y + i * level_height
 	
 
-func place_exit_level(grid, zone):
+func generate_exit_level(grid, zone):
 	var possible_positions = []
 	for i in range (grid.size() - 1):
 		for j in range (grid.size() - 1):
@@ -110,7 +111,7 @@ func place_exit_level(grid, zone):
 	var selected_y = possible_positions[selected_position_index][1]
 	
 	var next_dir = get_next_dir(selected_x, selected_y, selected_x, selected_y)
-	while(grid[next_dir[0]][next_dir[1]] != null):
+	while(grid[next_dir[0]][next_dir[1]] != null or is_out_of_bounds(next_dir[0], next_dir[1])):
 		next_dir = get_next_dir(selected_x, selected_y, selected_x, selected_y)
 		
 	var exit_x = next_dir[0]
@@ -118,8 +119,6 @@ func place_exit_level(grid, zone):
 	var exit_level = exit_level_path.instance()
 	grid[exit_x][exit_y] = exit_level
 	zone.add_child(exit_level)
-	exit_level.global_position.x = zone.global_position.x + exit_x * level_width
-	exit_level.global_position.y = zone.global_position.y + exit_y * level_height
 
 # Returns the random next indexes that are not equal to the previous level's.
 func get_next_dir(index_x, index_y, previous_index_x, previous_index_y):
@@ -142,10 +141,10 @@ func is_out_of_bounds(x, y):
 	
 func new_grid():
 	var grid = Array()
-	for i in range(level_depth * 2):
+	for i in range(level_depth * 2 + 1):
 		grid.append(Array())
 		grid[i] = Array()
-		for j in range(level_depth * 2):
+		for j in range(level_depth * 2 + 1):
 			grid[i].append(Array())
 			grid[i][j] = null
 	
@@ -184,3 +183,14 @@ func is_fully_attached(grid, index_x, index_y):
 	
 	return up and left and down and right
 
+func debug_grid(grid):
+	var grid_string = ""
+	for i in range(grid.size() - 1):
+		for j in range (grid.size() -1):
+			if grid[i][j] != null:
+				grid_string += "[ X ]"
+			else:
+				grid_string += "[   ]"
+		grid_string += "\n"
+	
+	print(grid_string)
