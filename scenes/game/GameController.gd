@@ -10,6 +10,7 @@ extends Node
 func _ready():
 	$Player.global_position = $LevelGenerator/InitialLevel/baseLevel/CenterAnchor.global_position
 	$Player.connect("take_damage", $Hud, "on_player_hit")
+	$Player.connect("heal", $Hud, "on_player_heal")
 	$CameraController/Camera2D.global_position = $Player.global_position
 
 
