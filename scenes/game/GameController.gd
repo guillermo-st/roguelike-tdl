@@ -4,6 +4,7 @@ extends Node
 func _ready():
 	# Signals
 	$Player.connect("take_damage", $Hud, "on_player_hit")
+	$Player.connect("heal", $Hud, "on_player_heal")
 	$Hud/LifeBar.connect("dead", self, "game_over")
 	$Menu.connect("start_game", self, "start_game")
 	
@@ -18,7 +19,6 @@ func start_game():
 	$LevelGenerator.show()
 	$Player.show()
 	
-	# Add the player node to the game
 	$Player.global_position = $LevelGenerator/InitialLevel/baseLevel/CenterAnchor.global_position
 	$CameraController/Camera2D.global_position = $Player.global_position
 	
