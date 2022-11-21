@@ -7,6 +7,7 @@ export var start_life = 12
 var max_life = 12 setget set_max_life
 var life = 12 setget set_life
 var life_preview = 12 setget set_preview_life
+var alive = true
 
 const NBR_BY_HEART = 4.0
 onready var hearts = $Hearts
@@ -20,6 +21,7 @@ func _ready():
 
 func reset():
 	self.life = max_life
+	self.alive = true
 
 
 func set_life(v):
@@ -28,7 +30,8 @@ func set_life(v):
 	tween.stop_all()
 	tween.interpolate_property(self,"life_preview",life_preview,life,abs(life_preview-life)/10,Tween.TRANS_LINEAR,Tween.EASE_IN)
 	tween.start()
-	if life <= 0:
+	if alive and life <= 0:
+		alive = false
 		emit_signal("dead")
 
 
