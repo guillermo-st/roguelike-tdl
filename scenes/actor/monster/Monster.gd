@@ -20,6 +20,8 @@ func take_damage(damage):
 	if !life_bar.value:
 		death()
 
+func wake_up():
+	active = true
 
 func _physics_process(delta):
 	if active:
