@@ -31,5 +31,6 @@ func _on_FireBall_body_entered(body):
 	
 
 func _on_FireBall_area_entered(area):
-	area.owner.take_damage(damage)
+	if area.owner and area.owner.is_in_group('monsters'):
+		area.owner.take_damage(damage)
 	explode()
