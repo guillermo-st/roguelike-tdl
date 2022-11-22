@@ -26,6 +26,10 @@ func take_damage(damage):
 
 
 func _physics_process(delta):
+	process_as_monster(delta)
+		
+
+func process_as_monster(delta):
 	if active:
 		if target and target_in_sight:
 			move_towards_target()
