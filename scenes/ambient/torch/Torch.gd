@@ -5,7 +5,7 @@ onready var light = $Light2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	turn_off()
 
 func turn_on():
 	fire_particles.emitting = true
