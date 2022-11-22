@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/actor/monster/RedSpiritMonster.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node2D"]
-modulate = Color( 0.713726, 0.917647, 0.956863, 1 )
 script = ExtResource( 3 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]

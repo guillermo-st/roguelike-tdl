@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal take_damage(damage)
+signal heal(heal_amount)
 
 export var max_speed = 500
 export var acceleration = 1000
@@ -61,6 +62,10 @@ func _on_Weapon_hit_attempt_started():
 
 func take_damage(damage = 1):
 	emit_signal("take_damage",damage)
+	
+
+func heal(heal_amount):
+	emit_signal("heal", heal_amount)
 	
 	
 func push(from,force):

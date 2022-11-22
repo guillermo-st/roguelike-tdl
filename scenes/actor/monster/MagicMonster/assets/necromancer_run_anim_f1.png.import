@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex"
+path="res://.import/necromancer_run_anim_f1.png-7f320b9656a9f7780910301c2e13199a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actor/monster/RedSpirit.png"
-dest_files=[ "res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex" ]
+source_file="res://scenes/actor/monster/MagicMonster/assets/necromancer_run_anim_f1.png"
+dest_files=[ "res://.import/necromancer_run_anim_f1.png-7f320b9656a9f7780910301c2e13199a.stex" ]
 
 [params]
 

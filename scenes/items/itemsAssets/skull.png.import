@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex"
+path="res://.import/skull.png-a105ce16e8b3b743972f53ca9949ee81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actor/monster/RedSpirit.png"
-dest_files=[ "res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex" ]
+source_file="res://scenes/items/itemsAssets/skull.png"
+dest_files=[ "res://.import/skull.png-a105ce16e8b3b743972f53ca9949ee81.stex" ]
 
 [params]
 

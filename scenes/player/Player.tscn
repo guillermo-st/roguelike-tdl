@@ -36,7 +36,7 @@ animations = [ {
 radius = 4.0
 height = 8.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 128
 script = ExtResource( 5 )
 max_speed = 250

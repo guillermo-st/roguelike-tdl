@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex"
+path="res://.import/necromancer_idle_anim_f1.png-db34fc4f5d2a293afcf53a826a906e34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actor/monster/RedSpirit.png"
-dest_files=[ "res://.import/RedSpirit.png-7f594a5827b16edd9afc77906e42308d.stex" ]
+source_file="res://scenes/actor/monster/MagicMonster/assets/necromancer_idle_anim_f1.png"
+dest_files=[ "res://.import/necromancer_idle_anim_f1.png-db34fc4f5d2a293afcf53a826a906e34.stex" ]
 
 [params]
 

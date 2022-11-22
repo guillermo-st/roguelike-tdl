@@ -9,10 +9,14 @@ var target_in_sight = false
 var WALL_COLLISION_LAYER = 128
 var active = false
 
+var health_item = preload("res://scenes/items/healthItem/HealthItem.tscn")
+var spinning_axes_item = preload("res://scenes/items/spinningAxesItem/SpinningAxesItem.tscn")
+
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
+onready var root = get_tree().get_root()
 
 func take_damage(damage):
 	life_bar.value -= damage
@@ -24,6 +28,10 @@ func wake_up():
 	active = true
 
 func _physics_process(delta):
+	process_as_monster(delta)
+		
+
+func process_as_monster(delta):
 	if active:
 		if target and target_in_sight:
 			move_towards_target()
@@ -40,6 +48,7 @@ func hit_fx():
 func death():
 	$AreaHitBox.monitoring = false
 	emit_signal("monster_died")
+	drop_item()
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ZERO,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	
 	remove_child(tween)
@@ -48,7 +57,6 @@ func death():
 	get_parent().add_child(sprite)
 	sprite.global_position = $Pivot.global_position
 	tween.start()
-	
 	queue_free()
 
 
@@ -101,3 +109,16 @@ func decide_animation(movement_axis):
 			sprite.animation = "Down"
 		else:
 			sprite.animation = "Up"
+
+
+func drop_item():
+	var random_number = randf()
+	if random_number > 0.8 and random_number < 0.9 :
+		var health_potion = health_item.instance()
+		health_potion.global_position = self.global_position
+		root.call_deferred("add_child", health_potion)
+	elif random_number > 0.9:
+		var skull = spinning_axes_item.instance()
+		skull.global_position = self.global_position
+		root.call_deferred("add_child", skull)		
+	
