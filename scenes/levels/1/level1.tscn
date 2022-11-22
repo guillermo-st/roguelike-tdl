@@ -22,10 +22,6 @@ tile_data = PoolIntArray( 196615, 16, 0, 196625, 16, 0, 327690, 16, 0, 327694, 1
 
 [node name="MonsterController" parent="." instance=ExtResource( 4 )]
 
-[node name="RedSpiritMonster" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
-position = Vector2( 200, 120 )
-scale = Vector2( 1, 1 )
-
 [node name="RedSpiritMonster8" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
 position = Vector2( 376, 32 )
 scale = Vector2( 1, 1 )
@@ -40,14 +36,6 @@ scale = Vector2( 1, 1 )
 
 [node name="RedSpiritMonster11" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
 position = Vector2( 32, 32 )
-scale = Vector2( 1, 1 )
-
-[node name="RedSpiritMonster6" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
-position = Vector2( 200, 88 )
-scale = Vector2( 1, 1 )
-
-[node name="RedSpiritMonster7" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
-position = Vector2( 200, 152 )
 scale = Vector2( 1, 1 )
 
 [node name="RedSpiritMonster2" parent="MonsterController" groups=["Monster"] instance=ExtResource( 5 )]
