@@ -8,6 +8,9 @@ var target
 var target_in_sight = false
 var WALL_COLLISION_LAYER = 128
 var active = false
+var score_value = 10
+
+onready var hud = get_tree().get_root().get_node("GameController/Hud")
 
 var health_item = preload("res://scenes/items/healthItem/HealthItem.tscn")
 var spinning_axes_item = preload("res://scenes/items/spinningAxesItem/SpinningAxesItem.tscn")
@@ -55,8 +58,8 @@ func death():
 	get_parent().add_child(sprite)
 	sprite.global_position = $Pivot.global_position
 	tween.start()
-	
 	queue_free()
+	hud.update_score(score_value)
 
 
 func _on_axis_changed(axis:Vector2):
