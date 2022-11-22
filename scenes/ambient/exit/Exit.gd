@@ -13,4 +13,5 @@ func open():
 		lock.queue_free()
 
 func _on_Exit_body_entered(_body):
+	$CollisionShape2D.set_deferred("monitoring", false)
 	SignalBus.emit_signal("zone_exited")

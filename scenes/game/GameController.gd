@@ -1,7 +1,7 @@
 extends Node
 
 var current_zone
-var auxiliary_player_pos = Vector2(-32, -32)
+var auxiliary_player_pos = Vector2(-5000, -5000)
 
 onready var hud = $Hud
 onready var player = $Player
@@ -17,20 +17,19 @@ func start_new_zone_deferred():
 	call_deferred("start_new_zone")
 
 func start_new_zone():
+	player.global_position = auxiliary_player_pos
 	
 	if current_zone != null:
 		hud.transition_black()
 		yield(hud.get_node("AnimationPlayer"), "animation_finished")
 		remove_child(current_zone)
 		current_zone.queue_free()
-	
-	player.global_position = auxiliary_player_pos
+
 	
 	var zone_and_pos = $LevelGenerator.get_next_zone()
 	current_zone = zone_and_pos[0]
 	add_child(current_zone)
 	
 	player.global_position = zone_and_pos[1]
-	$CameraController/Camera2D.global_position = player.global_position
-	
+	$CameraController/Camera2D.global_position = zone_and_pos[1]
 	hud.transition_clear()

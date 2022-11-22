@@ -17,6 +17,6 @@ level_depth = 8
 repeats = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -32, -32 )
+position = Vector2( -5000, -5000 )
 
 [node name="Hud" parent="." instance=ExtResource( 6 )]

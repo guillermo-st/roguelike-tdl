@@ -21,6 +21,7 @@ tile_data = PoolIntArray( 12, 20, 0, 20, 20, 0, 28, 20, 0, 36, 20, 0, 60, 20, 0,
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 200, 112 )
+z_index = -1
 
 [node name="ExitDoorTimer" type="Timer" parent="."]
 one_shot = true
