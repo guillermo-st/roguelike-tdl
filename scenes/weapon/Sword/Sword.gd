@@ -17,7 +17,8 @@ func _ready():
 	
 	
 func _on_HitBox_area_entered(area):
-	area.owner.take_damage(damage)
+	if area.owner and area.owner.is_in_group('monsters'):
+		area.owner.take_damage(damage)
 
 
 func behave_when_hitting():

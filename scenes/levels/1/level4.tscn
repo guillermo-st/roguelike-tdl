@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/actor/monster/MagicMonster/MagicMonster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/MonsterController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/MonsterLevel.gd" type="Script" id=4]
+
+[node name="level" type="Node2D"]
+modulate = Color( 0.407843, 0.745098, 0.858824, 1 )
+script = ExtResource( 4 )
+
+[node name="baseLevel" parent="." instance=ExtResource( 2 )]
+
+[node name="MonsterController" parent="." instance=ExtResource( 3 )]
+
+[node name="Monster" parent="MonsterController" instance=ExtResource( 1 )]
+position = Vector2( 109, 123 )
+
+[node name="Monster2" parent="MonsterController" instance=ExtResource( 1 )]
+position = Vector2( 303, 135 )
