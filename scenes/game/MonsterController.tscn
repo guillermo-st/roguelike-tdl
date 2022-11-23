@@ -9,4 +9,9 @@ script = ExtResource( 1 )
 wait_time = 0.5
 one_shot = true
 
+[node name="CheckRemainingTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="MonsterWakeupTimer" to="." method="_on_MonsterWakeupTimer_timeout"]
+[connection signal="timeout" from="CheckRemainingTimer" to="." method="_on_CheckRemainingTimer_timeout"]
