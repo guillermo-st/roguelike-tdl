@@ -13,8 +13,12 @@ script = ExtResource( 4 )
 [node name="CameraController" parent="." instance=ExtResource( 2 )]
 
 [node name="LevelGenerator" parent="." instance=ExtResource( 1 )]
+level_dir = "res://scenes/levels/"
+level_depth = 8
+repeats = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -5000, -5000 )
 
 [node name="Hud" parent="." instance=ExtResource( 6 )]
 

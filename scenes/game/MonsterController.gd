@@ -26,4 +26,4 @@ func _on_MonsterWakeupTimer_timeout():
 	var monsters = get_children()
 	for monster in monsters:
 		if monster.is_in_group("monsters"):
-			monster.active = true
+			monster.wake_up()

@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/levels/MonsterLevel.gd" type="Script" id=4]
 
 [node name="level" type="Node2D"]
-modulate = Color( 0.854902, 0.94902, 0.619608, 1 )
 script = ExtResource( 4 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/ambient/ForegroundTilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ambient/exit/Exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/common/ExitLevel.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ambient/torch/Torch.tscn" type="PackedScene" id=5]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="baseLevel" parent="." instance=ExtResource( 2 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 4, 4 )
+collision_layer = 128
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 12, 20, 0, 20, 20, 0, 28, 20, 0, 36, 20, 0, 60, 20, 0, 68, 20, 0, 76, 20, 0, 84, 20, 0, 262148, 16, 0, 262236, 16, 0, 1114160, 4, 0, 1179696, 5, 0, 1245225, 16, 0, 1245232, 5, 0, 1245239, 16, 0, 1310764, 18, 0, 1310768, 5, 0, 1310772, 17, 0, 1376300, 18, 0, 1376308, 17, 0, 1441836, 18, 0, 1441844, 17, 0, 1507372, 18, 0, 1507380, 17, 0, 1572905, 16, 0, 1572906, 7, 0, 1572918, 6, 0, 1572919, 16, 0, 1835050, 7, 0, 1835062, 6, 0, 2883588, 16, 0, 2883676, 16, 0 )
+
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 200, 112 )
+z_index = -1
+
+[node name="ExitDoorTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TorchTimer" type="Timer" parent="."]
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 48, 64 )
+
+[node name="Torch5" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 172, 136 )
+
+[node name="Torch6" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 228, 136 )
+
+[node name="Torch3" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 48, 176 )
+
+[node name="Torch4" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 352, 64 )
+
+[node name="Torch2" parent="Torches" instance=ExtResource( 5 )]
+position = Vector2( 352, 180 )
+
+[connection signal="timeout" from="ExitDoorTimer" to="." method="_on_ExitDoorTimer_timeout"]
+[connection signal="timeout" from="TorchTimer" to="." method="_on_TorchTimer_timeout"]

@@ -59,6 +59,7 @@ frames = SubResource( 17 )
 animation = "Right"
 
 [node name="LifeBar" type="TextureProgress" parent="Pivot"]
+light_mask = 0
 margin_left = -9.0
 margin_top = -23.0
 margin_right = 9.0

@@ -61,7 +61,6 @@ func _on_Weapon_hit_attempt_started():
 	
 
 func take_damage(damage = 1):
-	print("Player take_damage! Damage: ", damage)
 	emit_signal("take_damage",damage)
 	
 

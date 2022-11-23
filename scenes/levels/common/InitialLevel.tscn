@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/levels/common/InitialLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ambient/torch/Torch.tscn" type="PackedScene" id=3]
 
 [node name="InitialLevel" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="baseLevel" parent="." instance=ExtResource( 2 )]
+
+[node name="Torch" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+
+[node name="Torch2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 368, 192 )
+lit = true
+
+[node name="Torch3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 368, 48 )
+
+[node name="Torch4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 192 )
+lit = true
