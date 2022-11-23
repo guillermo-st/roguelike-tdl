@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/actor/monster/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ambient/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://scenes/actor/monster/SlimeMonster/SlimeMonster.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 432, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 432, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 464, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 480, 112, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=7]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+} ]
+
+[node name="Monster" instance=ExtResource( 1 )]
+scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+speed = 50
+splits = 2
+slime_birth_count = 2
+
+[node name="Sprite" parent="Pivot" index="1"]
+frames = SubResource( 7 )
+animation = "idle"
