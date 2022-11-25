@@ -1,30 +1,34 @@
 extends KinematicBody2D
 
-signal monster_died
-
 export var speed = 40
 var velocity = Vector2.ZERO
 var target
 var target_in_sight = false
 var WALL_COLLISION_LAYER = 128
 var active = false
+var can_take_damage = false
 
 var health_item = preload("res://scenes/items/healthItem/HealthItem.tscn")
 var spinning_axes_item = preload("res://scenes/items/spinningAxesItem/SpinningAxesItem.tscn")
 
 onready var life_bar:TextureProgress = $Pivot/LifeBar
 onready var tween:Tween = $Tween
+onready var invincibilityTimer = $InvincibilityTimer
 onready var sprite = $Pivot/Sprite
 onready var start_pos = global_position
 onready var root = get_tree().get_root()
 
 func take_damage(damage):
-	life_bar.value -= damage
-	hit_fx()
-	if !life_bar.value:
-		death()
+	if can_take_damage:
+		can_take_damage = false
+		invincibilityTimer.start()
+		life_bar.value -= damage
+		hit_fx()
+		if !life_bar.value:
+			death()
 
 func wake_up():
+	invincibilityTimer.start()
 	active = true
 
 func _physics_process(delta):
@@ -47,7 +51,6 @@ func hit_fx():
 
 func death():
 	$AreaHitBox.monitoring = false
-	emit_signal("monster_died")
 	drop_item()
 	tween.interpolate_property(sprite,"scale",Vector2(2,2),Vector2.ZERO,0.2,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	
@@ -122,3 +125,7 @@ func drop_item():
 		skull.global_position = self.global_position
 		root.call_deferred("add_child", skull)		
 	
+
+
+func _on_InvincibilityTimer_timeout():
+	can_take_damage = true

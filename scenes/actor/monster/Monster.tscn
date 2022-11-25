@@ -94,9 +94,14 @@ collision_layer = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource( 20 )
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="AreaHitBox" to="." method="_on_AreaHitBox_body_entered"]
 [connection signal="axis_changed" from="RandomMoveBehavior" to="." method="_on_axis_changed"]
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="RandomMoveBehavior" method="set_disabled" binds= [ false ]]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="RandomMoveBehavior" method="set_disabled" binds= [ true ]]
 [connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
