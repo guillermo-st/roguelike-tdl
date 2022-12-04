@@ -65,8 +65,6 @@ func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
 	$AnimatedSprite.play("hit")
 
-	
-
 func take_damage(damage = 1):
 	emit_signal("take_damage",damage)
 	health -= 1
@@ -75,6 +73,7 @@ func take_damage(damage = 1):
 
 func die():
 	can_move = false
+	$Collider.set_deferred("disabled", true)
 	$AnimatedSprite.play("die")
 	blood.emitting = true
 
