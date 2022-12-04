@@ -3,6 +3,7 @@ extends Node2D
 export var lit = false
 onready var fire_particles = $Particles2D
 onready var light = $Light2D
+onready var audio = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 		turn_off()
 
 func turn_on():
+	audio.play()
 	lit = true
 	fire_particles.emitting = true
 	light.enabled = true
