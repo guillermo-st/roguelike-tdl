@@ -30,13 +30,13 @@ color = Color( 0.717647, 0.027451, 0.027451, 1 )
 hue_variation = 1.0
 hue_variation_random = 0.05
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 10 )
-region = Rect2( 194, 108, 12, 12 )
+region = Rect2( 209, 73, 14, 14 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 6 ) ],
 "loop": true,
 "name": "die",
 "speed": 5.0
