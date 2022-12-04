@@ -1,10 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
-[ext_resource path="res://hud/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://hud/fonts/Wexville.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 3 )
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -13,8 +16,8 @@ script = ExtResource( 1 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -19.5
-margin_bottom = 19.5
+margin_top = -48.0
+margin_bottom = 21.0
 custom_fonts/font = SubResource( 1 )
 text = "The Dungeon 
 Labyrinth"
@@ -25,10 +28,11 @@ autowrap = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 150.0
-margin_top = -46.0
-margin_right = -150.0
-margin_bottom = -20.0
+margin_left = 162.0
+margin_top = -64.0
+margin_right = -89.0
+margin_bottom = -19.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "PLAY"
 
