@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/levels/LevelGenerator.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/CameraController.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://scenes/game/GameController.gd" type="Script" id=4]
 [ext_resource path="res://scenes/menu/Menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hud/Hud.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ambient/torch/Torch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/actor/monster/SlimeMonster/SlimeMonster.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/actor/monster/MagicMonster/MagicMonster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/actor/monster/RedSpiritMonster.tscn" type="PackedScene" id=11]
 
 [node name="GameController" type="Node"]
 script = ExtResource( 4 )
@@ -23,3 +28,34 @@ position = Vector2( -5000, -5000 )
 [node name="Hud" parent="." instance=ExtResource( 6 )]
 
 [node name="Menu" parent="." instance=ExtResource( 5 )]
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( -200, -112 )
+
+[node name="BaseLevel" parent="Background" instance=ExtResource( 8 )]
+
+[node name="Torch" parent="Background" instance=ExtResource( 7 )]
+position = Vector2( 48, 64 )
+lit = true
+
+[node name="Torch2" parent="Background" instance=ExtResource( 7 )]
+position = Vector2( 352, 64 )
+lit = true
+
+[node name="Torch3" parent="Background" instance=ExtResource( 7 )]
+position = Vector2( 352, 176 )
+lit = true
+
+[node name="Torch4" parent="Background" instance=ExtResource( 7 )]
+position = Vector2( 48, 176 )
+lit = true
+
+[node name="Monster" parent="Background" instance=ExtResource( 10 )]
+position = Vector2( 88, 88 )
+
+[node name="RedSpiritMonster" parent="Background" instance=ExtResource( 11 )]
+position = Vector2( 296, 40 )
+scale = Vector2( 1, 1 )
+
+[node name="Monster" parent="." instance=ExtResource( 9 )]
+position = Vector2( 104, 80 )
