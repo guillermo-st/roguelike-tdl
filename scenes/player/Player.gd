@@ -5,6 +5,8 @@ signal heal(heal_amount)
 
 export var max_speed = 500
 export var acceleration = 1000
+export var health = 12
+
 var push_velocity:Vector2 = Vector2()
 var motion = Vector2.ZERO
 var is_attacking = false
@@ -15,6 +17,9 @@ var weapons = [sword, staff]
 enum {SWORD_INDEX, STAFF_INDEX}
 var selected_weapon_index = SWORD_INDEX
 var can_switch_weapon = true
+var can_move = true
+
+onready var blood = $Blood
 
 onready var audio = $AudioStreamPlayer
 
@@ -26,16 +31,18 @@ func _ready():
 
 
 func _physics_process(delta):
-	var axis = get_input_axis()
-	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
-	$WeaponPivot.rotation = mouse_direction.angle()
+	if can_move:
+		var axis = get_input_axis()
+		var mouse_direction = (get_global_mouse_position() - global_position).normalized()
+		$WeaponPivot.rotation = mouse_direction.angle()
 	
-	if self.can_change_weapon():
-		self.change_weapon()	
-	self.behave_according_to_input(axis, delta)
-	self.look_towards_mouse(mouse_direction)
-	push_velocity = push_velocity.linear_interpolate(Vector2.ZERO,0.1)
-	motion = move_and_slide((motion+push_velocity).floor())
+		if self.can_change_weapon():
+			self.change_weapon()	
+		
+		self.behave_according_to_input(axis, delta)
+		self.look_towards_mouse(mouse_direction)
+		push_velocity = push_velocity.linear_interpolate(Vector2.ZERO,0.1)
+		motion = move_and_slide((motion+push_velocity).floor())
 
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -60,15 +67,24 @@ func _on_Weapon_hit_attempt_started():
 	self.is_attacking = true
 	$AnimatedSprite.play("hit")
 
-	
-
 func take_damage(damage = 1):
 	audio.play()
 	emit_signal("take_damage",damage)
-	
+	health -= 1
+	if health == 0:
+		die()
+
+func die():
+	can_move = false
+	$Collider.set_deferred("disabled", true)
+	$WeaponPivot.call_deferred("queue_free")
+	$LightOccluder2D.call_deferred("queue_free")
+	$AnimatedSprite.play("die")
+	blood.emitting = true
 
 func heal(heal_amount):
 	emit_signal("heal", heal_amount)
+	health += heal_amount
 	
 	
 func push(from,force):
