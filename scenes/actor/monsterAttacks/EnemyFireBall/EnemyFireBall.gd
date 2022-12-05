@@ -19,6 +19,7 @@ func _physics_process(delta):
 func _on_EnemyFireBall_body_entered(body):
 	if body.is_in_group('player'):
 		body.take_damage(1)
+		body.push(global_position, 50)
 	explode()
 
 
