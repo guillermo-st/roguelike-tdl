@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ambient/door/crate.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ambient/door/Door.gd" type="Script" id=2]
+[ext_resource path="res://sounds/DoorClose.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/DoorOpen.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 32 )
@@ -40,5 +42,13 @@ collision_layer = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLock"]
 position = Vector2( 4, 0 )
 shape = SubResource( 2 )
+
+[node name="OpenAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SoundFX"
+
+[node name="CloseAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SoundFX"
 
 [connection signal="body_entered" from="EnterArea" to="." method="_on_EnterArea_body_entered"]

@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal start_game
 signal game_over
+
+onready var menu_music = $MenuMusic
 	
 func show_message(text):
 	$Message.text = text
@@ -18,6 +20,7 @@ func show_game_over():
 func _on_PlayButton_pressed():
 	$PlayButton.hide()
 	$Message.hide()
+	menu_music.stop()
 	emit_signal("start_game")
 
 

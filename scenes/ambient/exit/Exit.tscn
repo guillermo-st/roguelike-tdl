@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/ambient/exit/doors_leaf_open.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ambient/exit/doors_leaf_closed.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ambient/exit/Exit.gd" type="Script" id=4]
 [ext_resource path="res://scenes/ambient/exit/floor_ladder.png" type="Texture" id=5]
+[ext_resource path="res://sounds/DoorOpen.ogg" type="AudioStream" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -58,5 +59,9 @@ collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders"]
 polygon = PoolVector2Array( -12, 12, -12, 12, -16, 12, -16, -14, -14, -16, 14, -16, 16, -14, 16, 12, 12, 12, 12, -12, -12, -12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SoundFX"
 
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]
