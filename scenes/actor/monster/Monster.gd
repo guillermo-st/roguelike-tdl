@@ -76,7 +76,7 @@ func _on_axis_changed(axis:Vector2):
 
 func _on_AreaHitBox_body_entered(body):
 	body.take_damage()
-	body.push(global_position,75)
+	body.push(global_position, 100)
 
 func _on_Sight_body_entered(body):
 	target = body
