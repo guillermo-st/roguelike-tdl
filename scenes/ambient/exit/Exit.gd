@@ -1,12 +1,13 @@
 extends Area2D
 
 onready var sprite = $AnimatedSprite
-
+onready var audio = $AudioStreamPlayer
 
 func _ready():
 	sprite.play("closed")
 
 func open():
+	audio.play()
 	sprite.play("open")
 	var lock = get_node_or_null("Lock")
 	if lock:

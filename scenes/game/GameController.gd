@@ -7,6 +7,9 @@ onready var hud = $Hud
 onready var player = $Player
 onready var zone_number = 0
 
+onready var game_over_audio = $GameOverMusic
+onready var level_music = $LevelMusic
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,13 +31,17 @@ func start_game():
 	$Player.show()
 	$Background.queue_free()
 	start_new_zone()
+	level_music.play()
 	
 func game_over():
+	level_music.stop()
+	game_over_audio.play()
 	$Menu.show_game_over()
 	yield($Menu, "game_over")
 	hud.transition_black()
 	yield(hud.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().reload_current_scene()
+
 
 func start_new_zone_deferred():
 	call_deferred("start_new_zone")

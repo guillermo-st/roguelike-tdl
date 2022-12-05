@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pickupPotion.ogg-5cfec37da36b73910b50ba15beae29f1.oggstr"
+
+[deps]
+
+source_file="res://sounds/pickupPotion.ogg"
+dest_files=[ "res://.import/pickupPotion.ogg-5cfec37da36b73910b50ba15beae29f1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/ambient/torch/torch.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ambient/torch/light.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ambient/torch/Torch.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ambient/torch/light.jpg" type="Texture" id=4]
+[ext_resource path="res://sounds/Torch.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.511364 ), 0.0, 0.0, 0, 0 ]
@@ -71,5 +72,9 @@ collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SoundFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
