@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/items/Item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/items/healthItem/HealthItem.gd" type="Script" id=2]
 [ext_resource path="res://scenes/items/itemsAssets/flask_big_red.png" type="Texture" id=3]
+[ext_resource path="res://sounds/pickupPotion.ogg" type="AudioStream" id=4]
 
 [node name="Item" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 4 )
+volume_db = -12.0
+bus = "SoundFX"

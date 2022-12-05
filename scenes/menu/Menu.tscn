@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
+
 [ext_resource path="res://hud/fonts/Wexville.ttf" type="DynamicFontData" id=2]
+
+[ext_resource path="res://sounds/MenuMusic.mp3" type="AudioStream" id=2]
+[ext_resource path="res://hud/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -38,6 +43,12 @@ text = "PLAY"
 
 [node name="GameOverMessageTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -12.0
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="GameOverMessageTimer" to="." method="_on_GameOverMessageTimer_timeout"]

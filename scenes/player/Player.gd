@@ -21,6 +21,8 @@ var can_move = true
 
 onready var blood = $Blood
 
+onready var audio = $AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
@@ -66,6 +68,7 @@ func _on_Weapon_hit_attempt_started():
 	$AnimatedSprite.play("hit")
 
 func take_damage(damage = 1):
+	audio.play()
 	emit_signal("take_damage",damage)
 	health -= 1
 	if health == 0:

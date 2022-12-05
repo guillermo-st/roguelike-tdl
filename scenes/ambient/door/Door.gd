@@ -9,6 +9,9 @@ var is_open
 var should_position_player #if true, the player is positioned in front of door on entering
 var is_interactable #if true, the door can be closed and opened. Otherwise the door is frozen on its last state.
 
+onready var open_audio = $OpenAudio
+onready var close_audio = $CloseAudio
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.modulate.a = 0
@@ -23,6 +26,7 @@ func allow_interaction(val):
 
 func close():
 	if is_open and is_interactable:
+		close_audio.play()
 		$DoorLock.global_position = self.global_position
 		$Tween.interpolate_property($Sprite, "global_position", $OpenPosition.global_position, self.global_position, 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 		$Tween.interpolate_property($Sprite, "modulate", Color(1,1,1,0), Color(1,1,1,1), 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT )
@@ -31,6 +35,7 @@ func close():
 
 func open():
 	if not is_open and is_interactable:
+		open_audio.play()
 		$DoorLock.global_position = $OpenPosition.position
 		$Tween.interpolate_property($Sprite, "global_position", self.global_position, $OpenPosition.global_position, 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 		$Tween.interpolate_property($Sprite, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT )

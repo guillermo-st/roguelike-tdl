@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/actor/monsterAttacks/MagicAttack.gd" type="Script" id=1]
+[ext_resource path="res://sounds/MagicStaff.ogg" type="AudioStream" id=2]
 
 [node name="MagicAttack" type="Node2D"]
 script = ExtResource( 1 )
@@ -37,5 +38,10 @@ position = Vector2( -0.5, 0.5 )
 rotation = 3.92699
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -24.0
+bus = "SoundFX"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
