@@ -10,7 +10,7 @@ export var health = 12
 var push_velocity:Vector2 = Vector2()
 var motion = Vector2.ZERO
 var is_attacking = false
-var is_hitted = false
+var is_hit = false
 
 var sword = preload("res://scenes/weapon/Sword/Sword.tscn")
 var staff = preload("res://scenes/weapon/staff/Staff.tscn")
@@ -47,7 +47,7 @@ func _physics_process(delta):
 
 func get_input_axis():
 	var axis = Vector2.ZERO
-	if !self.is_hitted:	
+	if !self.is_hit:	
 		axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 		axis.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	return axis.normalized()
@@ -70,8 +70,8 @@ func _on_Weapon_hit_attempt_started():
 	$AnimatedSprite.play("hit")
 
 func take_damage(damage = 1):
-	if !is_hitted:
-		is_hitted = true
+	if !is_hit:
+		is_hit = true
 		$HitTimer.start()
 		$AnimationPlayer.play("damage")
 		audio.play()
@@ -157,4 +157,4 @@ func _on_PushTimer_timeout():
 
 
 func _on_HitTimer_timeout():
-	is_hitted = false
+	is_hit = false
