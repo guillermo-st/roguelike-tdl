@@ -8,6 +8,7 @@ export var acceleration = 1000
 var push_velocity:Vector2 = Vector2()
 var motion = Vector2.ZERO
 var is_attacking = false
+var is_hitted = false
 
 var sword = preload("res://scenes/weapon/Sword/Sword.tscn")
 var staff = preload("res://scenes/weapon/staff/Staff.tscn")
@@ -29,7 +30,7 @@ func _physics_process(delta):
 	$WeaponPivot.rotation = mouse_direction.angle()
 	
 	if self.can_change_weapon():
-		self.change_weapon()	
+		self.change_weapon()
 	self.behave_according_to_input(axis, delta)
 	self.look_towards_mouse(mouse_direction)
 	push_velocity = push_velocity.linear_interpolate(Vector2.ZERO,0.1)
@@ -37,8 +38,9 @@ func _physics_process(delta):
 
 func get_input_axis():
 	var axis = Vector2.ZERO
-	axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	axis.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	if !self.is_hitted:	
+		axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+		axis.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	return axis.normalized()
 	
 
@@ -61,7 +63,11 @@ func _on_Weapon_hit_attempt_started():
 	
 
 func take_damage(damage = 1):
-	emit_signal("take_damage",damage)
+	if !is_hitted:
+		is_hitted = true
+		$HitTimer.start()
+		$AnimationPlayer.play("damage")
+		emit_signal("take_damage",damage)
 	
 
 func heal(heal_amount):
@@ -129,3 +135,7 @@ func _on_WeaponSwitchTimer_timeout():
 
 func _on_PushTimer_timeout():
 	push_velocity = Vector2()
+
+
+func _on_HitTimer_timeout():
+	is_hitted = false
