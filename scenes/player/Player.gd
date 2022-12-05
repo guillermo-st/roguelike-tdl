@@ -77,6 +77,8 @@ func take_damage(damage = 1):
 func die():
 	can_move = false
 	$Collider.set_deferred("disabled", true)
+	$WeaponPivot.call_deferred("queue_free")
+	$LightOccluder2D.call_deferred("queue_free")
 	$AnimatedSprite.play("die")
 	blood.emitting = true
 
