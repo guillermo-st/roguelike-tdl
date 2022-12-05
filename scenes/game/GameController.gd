@@ -29,6 +29,7 @@ func _ready():
 func start_game():
 	$Hud.show()
 	$Player.show()
+	$Background.queue_free()
 	start_new_zone()
 	level_music.play()
 	
@@ -37,6 +38,8 @@ func game_over():
 	game_over_audio.play()
 	$Menu.show_game_over()
 	yield($Menu, "game_over")
+	hud.transition_black()
+	yield(hud.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().reload_current_scene()
 
 
