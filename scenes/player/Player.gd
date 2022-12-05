@@ -17,6 +17,8 @@ enum {SWORD_INDEX, STAFF_INDEX}
 var selected_weapon_index = SWORD_INDEX
 var can_switch_weapon = true
 
+onready var audio = $AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WeaponPivot.add_child(weapons[selected_weapon_index].instance())
@@ -67,6 +69,7 @@ func take_damage(damage = 1):
 		is_hitted = true
 		$HitTimer.start()
 		$AnimationPlayer.play("damage")
+		audio.play()
 		emit_signal("take_damage",damage)
 	
 

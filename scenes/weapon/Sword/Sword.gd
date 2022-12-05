@@ -3,6 +3,7 @@ extends "res://scenes/weapon/Weapon.gd"
 export var damage = 3
 var weapon_position = Vector2(4, 5)
 var weapon_rotation = 16.4
+onready var audio = $AudioStreamPlayer
 
 		
 
@@ -26,6 +27,7 @@ func behave_when_hitting():
 	emit_signal("hit_attempt_started")
 	$Pivot/SwordAnimationPlayer.play("SwordAttack")
 	$AttackTimer.start()
+	audio.play()
 	$HitBox/CollisionShape2D.disabled = false	
 	
 
