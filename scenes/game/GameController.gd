@@ -19,12 +19,16 @@ func _ready():
 	$Player.connect("heal", $Hud, "on_player_heal")
 	$Hud/LifeBar.connect("dead", self, "game_over")
 	$Menu.connect("start_game", self, "start_game")
+	$Menu.connect("quit", self, "quit_game")
 	SignalBus.connect("zone_exited", self, "start_new_zone_deferred")
 	
 	# Prevent the player from interacting with the game before the play button is pressed
 	$Hud.hide()
 	$Player.hide()
 	
+
+func quit_game():
+	get_tree().quit()
 
 func start_game():
 	$Hud.show()

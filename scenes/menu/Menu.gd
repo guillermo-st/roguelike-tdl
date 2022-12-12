@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal start_game
 signal game_over
+signal quit
 
 onready var menu_music = $MenuMusic
 	
@@ -20,9 +21,14 @@ func show_game_over():
 func _on_PlayButton_pressed():
 	$PlayButton.hide()
 	$Message.hide()
+	$QuitButton.hide()
 	menu_music.stop()
 	emit_signal("start_game")
 
 
 func _on_GameOverMessageTimer_timeout():
 	$Message.hide()
+
+
+func _on_QuitButton_pressed():
+	emit_signal("quit")
