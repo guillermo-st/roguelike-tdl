@@ -26,11 +26,13 @@ tile_data = PoolIntArray( 393219, 4, 0, 393220, 4, 0, 393221, 4, 0, 393222, 4, 0
 [node name="Monster" parent="MonsterController" instance=ExtResource( 5 )]
 modulate = Color( 0.92549, 0.180392, 0.0588235, 1 )
 position = Vector2( 64, 64 )
+speed = 30
 slime_birth_count = 4
 
 [node name="Monster2" parent="MonsterController" instance=ExtResource( 5 )]
 modulate = Color( 0.92549, 0.180392, 0.0588235, 1 )
 position = Vector2( 336, 192 )
+speed = 30
 slime_birth_count = 4
 
 [node name="Torch" parent="." instance=ExtResource( 4 )]

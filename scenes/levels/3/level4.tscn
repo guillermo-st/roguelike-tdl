@@ -25,13 +25,16 @@ format = 1
 [node name="Monster" parent="MonsterController" instance=ExtResource( 5 )]
 modulate = Color( 0.92549, 0.180392, 0.0588235, 1 )
 position = Vector2( 200, 128 )
+speed = 30
 slime_birth_count = 4
 
 [node name="Monster2" parent="MonsterController" instance=ExtResource( 5 )]
 position = Vector2( 88, 176 )
+speed = 30
 
 [node name="Monster3" parent="MonsterController" instance=ExtResource( 5 )]
 position = Vector2( 320, 184 )
+speed = 30
 
 [node name="Torch" parent="." instance=ExtResource( 4 )]
 position = Vector2( 200, 72 )
