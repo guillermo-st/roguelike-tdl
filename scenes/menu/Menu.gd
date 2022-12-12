@@ -21,6 +21,7 @@ func show_game_over():
 func _on_PlayButton_pressed():
 	$PlayButton.hide()
 	$Message.hide()
+	$QuitButton.hide()
 	menu_music.stop()
 	emit_signal("start_game")
 
