@@ -18,7 +18,7 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 128
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 131073, 16, 0, 131074, 16, 0, 131076, 16, 0, 131077, 16, 0, 131079, 16, 0, 131080, 16, 0, 131082, 16, 0, 131083, 16, 0, 131085, 16, 0, 131086, 16, 0, 131088, 16, 0, 131089, 16, 0, 131091, 16, 0, 131092, 16, 0, 131094, 16, 0, 131095, 16, 0, 262146, 16, 0, 262147, 16, 0, 262149, 16, 0, 262150, 16, 0, 262152, 16, 0, 262153, 16, 0, 262155, 16, 0, 262156, 16, 0, 262158, 16, 0, 262159, 16, 0, 262161, 16, 0, 262162, 16, 0, 262164, 16, 0, 262165, 16, 0, 393217, 16, 0, 393218, 16, 0, 393220, 16, 0, 393221, 16, 0, 393223, 16, 0, 393224, 16, 0, 393226, 16, 0, 393227, 16, 0, 393229, 16, 0, 393230, 16, 0, 393232, 16, 0, 393233, 16, 0, 393235, 16, 0, 393236, 16, 0, 393238, 16, 0, 393239, 16, 0, 524290, 16, 0, 524291, 16, 0, 524293, 16, 0, 524294, 16, 0, 524296, 16, 0, 524297, 16, 0, 524299, 16, 0, 524300, 16, 0, 524302, 16, 0, 524303, 16, 0, 524305, 16, 0, 524306, 16, 0, 524308, 16, 0, 524309, 16, 0, 655361, 16, 0, 655362, 16, 0, 655364, 16, 0, 655365, 16, 0, 655367, 16, 0, 655368, 16, 0, 655370, 16, 0, 655371, 16, 0, 655373, 16, 0, 655374, 16, 0, 655376, 16, 0, 655377, 16, 0, 655379, 16, 0, 655380, 16, 0, 655382, 16, 0, 655383, 16, 0 )
+tile_data = PoolIntArray( 131074, 16, 0, 131076, 16, 0, 131077, 16, 0, 131079, 16, 0, 131080, 16, 0, 131082, 16, 0, 131086, 16, 0, 131088, 16, 0, 131089, 16, 0, 131091, 16, 0, 131092, 16, 0, 131094, 16, 0, 262146, 16, 0, 262147, 16, 0, 262149, 16, 0, 262150, 16, 0, 262161, 16, 0, 262162, 16, 0, 262164, 16, 0, 262165, 16, 0, 393220, 16, 0, 393221, 16, 0, 393223, 16, 0, 393224, 16, 0, 393232, 16, 0, 393233, 16, 0, 393235, 16, 0, 393236, 16, 0, 524290, 16, 0, 524291, 16, 0, 524293, 16, 0, 524294, 16, 0, 524305, 16, 0, 524306, 16, 0, 524308, 16, 0, 524309, 16, 0, 655362, 16, 0, 655364, 16, 0, 655365, 16, 0, 655367, 16, 0, 655368, 16, 0, 655370, 16, 0, 655374, 16, 0, 655376, 16, 0, 655377, 16, 0, 655379, 16, 0, 655380, 16, 0, 655382, 16, 0 )
 
 [node name="MonsterController" parent="." instance=ExtResource( 2 )]
 
@@ -78,10 +78,6 @@ scale = Vector2( 1, 1 )
 position = Vector2( 340, 171 )
 scale = Vector2( 1, 1 )
 
-[node name="RedSpiritMonster22" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]
-position = Vector2( 200, 125 )
-scale = Vector2( 1, 1 )
-
 [node name="RedSpiritMonster23" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]
 position = Vector2( 153, 122 )
 scale = Vector2( 1, 1 )
@@ -90,16 +86,8 @@ scale = Vector2( 1, 1 )
 position = Vector2( 246, 122 )
 scale = Vector2( 1, 1 )
 
-[node name="RedSpiritMonster25" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]
-position = Vector2( 105, 121 )
-scale = Vector2( 1, 1 )
-
 [node name="RedSpiritMonster26" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]
 position = Vector2( 56, 122 )
-scale = Vector2( 1, 1 )
-
-[node name="RedSpiritMonster27" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]
-position = Vector2( 295, 124 )
 scale = Vector2( 1, 1 )
 
 [node name="RedSpiritMonster28" parent="MonsterController" groups=["Monster"] instance=ExtResource( 1 )]

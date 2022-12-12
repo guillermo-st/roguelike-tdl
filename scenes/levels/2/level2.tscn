@@ -23,8 +23,8 @@ tile_data = PoolIntArray( 262155, 16, 0, 262156, 16, 0, 262157, 16, 0, 327691, 1
 
 [node name="Monster" parent="MonsterController" instance=ExtResource( 3 )]
 position = Vector2( 40, 200 )
-speed = 25
+speed = 30
 
 [node name="Monster2" parent="MonsterController" instance=ExtResource( 3 )]
 position = Vector2( 360, 56 )
-speed = 25
+speed = 30
