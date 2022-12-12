@@ -19,13 +19,14 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 128
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 3, 3, 0, 65539, 7, 0, 131075, 7, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 0, 0, 262144, 18, 0, 262145, 19, 0, 262146, 19, 0, 262147, 19, 0, 655380, 18, 0, 655381, 19, 0, 655382, 19, 0, 655383, 19, 0, 655384, 17, 0, 720916, 6, 0, 786452, 6, 0, 851988, 6, 0 )
+tile_data = PoolIntArray( 3, 3, 0, 65539, 7, 0, 131075, 7, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 0, 0, 655380, 18, 0, 655381, 19, 0, 655382, 19, 0, 655383, 19, 0, 655384, 17, 0, 720916, 6, 0, 786452, 6, 0, 851988, 6, 0 )
 
 [node name="MonsterController" parent="." instance=ExtResource( 6 )]
 
 [node name="Monster" parent="MonsterController" instance=ExtResource( 5 )]
 modulate = Color( 0.92549, 0.180392, 0.0588235, 1 )
 position = Vector2( 200, 128 )
+speed = 30
 slime_birth_count = 4
 
 [node name="RedSpiritMonster" parent="MonsterController" instance=ExtResource( 4 )]
