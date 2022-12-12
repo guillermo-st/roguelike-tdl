@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/actor/monster/MagicMonster/MagicMonster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actor/monster/RedSpiritMonster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/MonsterController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/actor/monster/SlimeMonster/SlimeMonster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ambient/ForegroundTilemap.tres" type="TileSet" id=6]
+[ext_resource path="res://scenes/levels/MonsterLevel.gd" type="Script" id=7]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="baseLevel" parent="." instance=ExtResource( 5 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 2
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 128
+collision_mask = 0
+format = 1
+
+[node name="MonsterController" parent="." instance=ExtResource( 3 )]
+
+[node name="RedSpiritMonster9" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 267, 123 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster8" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 131, 122 )
+scale = Vector2( 1, 1 )
+
+[node name="Monster" parent="MonsterController" instance=ExtResource( 1 )]
+position = Vector2( 200, 122 )
+
+[node name="Monster2" parent="MonsterController" instance=ExtResource( 4 )]
+position = Vector2( 200, 71 )
+
+[node name="Monster3" parent="MonsterController" instance=ExtResource( 4 )]
+position = Vector2( 200, 178 )

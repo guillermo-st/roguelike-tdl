@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/actor/monster/MagicMonster/MagicMonster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actor/monster/RedSpiritMonster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/MonsterController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/base/baseLevel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ambient/ForegroundTilemap.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/levels/MonsterLevel.gd" type="Script" id=6]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="baseLevel" parent="." instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 2
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 128
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 131078, 16, 0, 131090, 16, 0, 196614, 16, 0, 196626, 16, 0, 262146, 16, 0, 262147, 16, 0, 262148, 16, 0, 262149, 16, 0, 262150, 16, 0, 262162, 16, 0, 262163, 16, 0, 262164, 16, 0, 262165, 16, 0, 262166, 16, 0, 458754, 16, 0, 458755, 16, 0, 458756, 16, 0, 458757, 16, 0, 458758, 16, 0, 458770, 16, 0, 458771, 16, 0, 458772, 16, 0, 458773, 16, 0, 458774, 16, 0, 524294, 16, 0, 524306, 16, 0, 589830, 16, 0, 589842, 16, 0, 655366, 16, 0, 655378, 16, 0 )
+
+[node name="MonsterController" parent="." instance=ExtResource( 3 )]
+
+[node name="RedSpiritMonster8" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 39, 73 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster9" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 56, 45 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster10" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 70, 72 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster11" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 328, 68 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster12" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 358, 71 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster13" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 344, 42 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster14" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 38, 169 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster15" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 72, 170 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster16" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 56, 198 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster17" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 328, 169 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster18" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 359, 169 )
+scale = Vector2( 1, 1 )
+
+[node name="RedSpiritMonster19" parent="MonsterController" groups=["Monster"] instance=ExtResource( 2 )]
+position = Vector2( 345, 199 )
+scale = Vector2( 1, 1 )
+
+[node name="Monster" parent="MonsterController" instance=ExtResource( 1 )]
+position = Vector2( 202, 117 )

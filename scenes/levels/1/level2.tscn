@@ -13,7 +13,7 @@ script = ExtResource( 3 )
 [node name="MonsterController" parent="." instance=ExtResource( 2 )]
 
 [node name="Monster" parent="MonsterController" instance=ExtResource( 4 )]
-position = Vector2( 109, 123 )
+position = Vector2( 120, 133 )
 
 [node name="Monster2" parent="MonsterController" instance=ExtResource( 4 )]
 position = Vector2( 303, 135 )
